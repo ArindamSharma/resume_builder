@@ -1,3 +1,13 @@
+/* *::-webkit-scrollbar { */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    /* display: none; */
+/* } */
+/* * { */
+    /* Hide scrollbar for IE, Edge and Firefox */
+    /* -ms-overflow-style: none;  IE and Edge */
+    /* scrollbar-width: none;  Firefox */
+/* } */
+
 .bg-image{
     background-image: url(./bg2.1.png);
     /* background-repeat: no-repeat; */
@@ -50,7 +60,7 @@
     background-color: rgba(0, 0, 0, 0.185);
     border-radius: 10px;
 }
-.theme-button{
+.theme-button-1{
     font-family: 'Public Sans', sans-serif;
     text-decoration: none;
     outline: none;
@@ -60,9 +70,22 @@
     border-width: 0;
     font-weight: 700;
     background-color: white;
-    /* transition: background-color 1s; */
 }
-.theme-button:hover{
+.theme-button-1:hover{
+    background-color: rgb(228, 228, 228);
+}
+.theme-button-2{
+    font-family: 'Public Sans', sans-serif;
+    text-decoration: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 7.5px;
+    margin:10px;
+    border-width: 0;
+    font-weight: 700;
+    background-color: white;
+}
+.theme-button-2:hover{
     background-color: rgb(228, 228, 228);
 }
 .buttonframe{
@@ -100,48 +123,124 @@
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.808);
 }
-.modal-container > :first-child {
+.close-button{
     align-self: flex-end;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+.remove-button{
+    align-self: flex-end;
+    padding: 5px 10px;
 }
 .modal-container > *{
     margin: 10px;
+    font-family: 'Public Sans', sans-serif;
 }
 
 .modal-sections{
     width: 100%;
     overflow: auto;
     scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .modal-section{
-    width: 100%;
+    background-color: rgba(255, 255, 255, 0.123);
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
+.modal-section .subheading{
+    font-size: 30px;
+}
+.modal-subsection{
+    background-color: rgba(0, 0, 0, 0.322);
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
 .field-entry{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding-top: 1.1vw;
-    padding-bottom: 1.1vw;
+    /* align-items: center; */
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .field-entry .label{
     font-family: 'Public Sans', sans-serif;
     color: white;
     padding-right: 2vw;
+    padding-top: 5px;
 }
-
-.seperator{
+.field-entry .input{
+    width: 250px;
+    outline: none;
+    border-width: 0px;
+    padding: 10px;
+    border-radius: 7.5px;
+    font-weight: 600;
+}
+.date-input{
+    width: unset!important;
+}
+.checkbox-field{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.checkbox-field .input{
+    width: 20px!important;
+}
+.minput{
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.minput-field{
+    width: 100%;
+    border-width: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+    border-radius: 7.5px;
     background-color: white;
-    height: 1px;
-    width: 50%;
 
 }
-
+.minput-input{
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 7.5px 0 0 7.5px;
+    font-weight: 600;
+    border-width: inherit;
+}
+.minput-button{
+    padding: 10px;
+    border-width: inherit;
+    border-radius: 7.5px;
+}
+.minput-button:hover{
+    background-color: rgb(197, 197, 197);
+}.minput-button:active{
+    background-color: rgb(224, 224, 224);
+}
 @media screen and (max-width:700px) {
     .main-heading{
         font-size: 40px;
@@ -156,6 +255,9 @@
         width:unset;
         max-width:500px;
         padding: 20px;
+    }
+    .field-entry .input{
+        width: 300px;
     }
     
 }

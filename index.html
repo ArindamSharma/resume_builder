@@ -7,309 +7,253 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans&display=swap" rel="stylesheet">
-    
+
     <!-- <script src="./resume_data.js"></script> -->
     <link rel="stylesheet" href="index.css">
     <script type="text/javascript" src="./index.js"></script>
     
     <title>Welcome To Resume Builder</title>
 </head>
-<body class="bg-image">
+<body class="bg-image" onload="OnLoad()">
     <div class="modal">
         <div class="modal-container">
-            <button class="modal-close" onclick="ModalClose()">X</button>
+            <button class="modal-close theme-button-2 close-button" onclick="FormClose()">X</button>
             <div class="heading">Resume Details Generator</div>
             <div class="modal-sections">
                 <div class="modal-section intro">
                     <div class="subheading">Introduction</div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                    <!-- <div class="field-entry">
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">Last Name Name</label>
+                        <label class="label" for="">Last Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">Title</label>
+                        <label class="label" for="">Title</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">Introduction/Summary</label>
+                        <label class="label" for="">Introduction/Summary</label>
                         <textarea class="input" name="" id="" cols="30" rows="3"></textarea>
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">Email</label>
+                        <label class="label" for="">Email</label>
+                        <input class="input" type="email" name="name" id="name">
+                    </div>
+                    <div class="field-entry">
+                        <label class="label" for="">Address</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">Address</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">Phone Number</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
+                        <label class="label" for="">Phone Number</label>
+                        <input class="input" type="number" name="name" id="name">
+                    </div> -->
                 </div>
                 <div class="modal-section education">
                     <div class="subheading">Education</div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
+                    <!-- <div class="modal-subsection">
+                        <button class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Educations')">Remove</button>
+                        <div class="field-entry">
+                            <label class="label" for="">School/University</label>
+                            <input class="input" type="text" name="name" id="name">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">School Type</label>
+                            <input class="input" type="text" list="schooltype" name="name" id="name">
+                            <datalist id="schooltype">
+                                <option value="Higher Secondary School"></option>
+                                <option value="Senior Secondary School"></option>
+                                <option value="Under-Graduation"></option>
+                                <option value="Post-Graduation"></option>
+                            </datalist>
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">Degree Type</label>
+                            <input class="input" type="text" list="degreetype" name="name" id="name">
+                            <datalist id="degreetype">
+                                <option value="Schooling"></option>
+                                <option value="B.Tech"></option>
+                                <option value="M.Tech"></option>
+                                <option value="Dual Degree(B.Tech+M.Tech)"></option>
+                            </datalist>
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">Degree</label>
+                            <input class="input" type="text" list="degree" name="name" id="name">
+                            <datalist id="degree">
+                                <option value="Computer Science"></option>
+                                <option value="Computer Science and Engineering"></option>
+                            </datalist>
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">CGPA/Percentage</label>
+                            <input class="input" type="number" name="name" id="name">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">To</label>
+                            <input class="input" type="month" name="name" id="name">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">From</label>
+                            <input class="input" type="month" name="name" id="name">
+                        </div>
+                    </div> -->
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'educations')">+ Add</button>
                 </div>
                 <div class="modal-section experiences">
                     <div class="subheading">Experiences</div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
+                    <!-- <div class="modal-subsection">
+                        <button class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Experiences')">Remove</button>    
+                        <div class="field-entry">
+                            <label class="label" for="">Position</label>
+                            <input class="input" type="text" name="name" id="name">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">Company</label>
+                            <input class="input" type="text" name="name" id="name">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">Description</label>
+                            <textarea class="input" name="" id="" cols="30" rows="3"></textarea>
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for=""></label>
+                            <div class="checkbox-field">
+                                <input class="input" type="checkbox" name="name" id="name">
+                                <label class="label" for="">I am currently working here</label> 
+                            </div>
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">Start</label>
+                            <input class="input" type="text" name="name" id="name">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="">End</label>
+                            <input class="input" type="text" name="name" id="name">
+                        </div>
+                    </div> -->
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'experiences')">+ Add</button>
                 </div>
                 <div class="modal-section skills">
                     <div class="subheading">Skills</div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                    <!-- <div class="field-entry">
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
+                    </div> -->
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'skills')">+ Add</button>
                 </div>
                 <div class="modal-section project">
                     <div class="subheading">Projects</div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
+                    <!-- <div class="modal-subsection">
+                        <button class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Projects')">Remove</button>
+                        <div class="field-entry">
+                            <label class="label" for="edu_0_0_input">Title</label>
+                            <input class="input" name="edu_0_0_input" id="edu_0_0_input" type="text">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="edu_0_1_input">Description</label>
+                            <textarea class="input" name="edu_0_1_input" id="edu_0_1_input" cols="30" rows="5"></textarea>
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="edu_0_2_input">Skills</label>
+                            <input class="input" name="edu_0_2_input" id="edu_0_2_input" type="text">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="edu_0_3_input">Link</label>
+                            <div class="minput">
+                                <div class="minput-field">
+                                    <input class="minput-input" type="text">
+                                    <button class="minput-button">X</button>
+                                </div>
+                                <button class="minput-button">+ Add</button>
+                            </div>
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="edu_0_4_input">To</label>
+                            <input class="input date-input" name="edu_0_4_input" id="edu_0_4_input" type="month">
+                        </div>
+                        <div class="field-entry">
+                            <label class="label" for="edu_0_5_input">From</label>
+                            <input class="input date-input" name="edu_0_5_input" id="edu_0_5_input" type="month">
+                        </div>
+                    </div> -->
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'projects')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Position Of Responsibilities</div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                    <!-- <div class="field-entry">
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
+                    </div> -->
+                    
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'por')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Achievements</div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                    <!-- <div class="field-entry">
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
+                    </div> -->
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'achievements')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Certifications</div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Extras</div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
                     <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
+                        <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="field-entry">
-                        <label class="label" for="name">First Name</label>
-                        <input class="input" type="text" name="name" id="name">
-                    </div>
-                    <div class="seperator"></div>
                 </div>
             </div>
-            <button class="modal-save" onclick="ModalSave()">Save</button>
+            <button class="modal-save theme-button-2" onclick="ModalSave()">Save</button>
         </div>
     </div>
     <div class="container">
@@ -319,22 +263,22 @@
             <div class="step">
                 <div class="heading">Step : 1</div>
                 <div class="subheading">Fill Form to Generate Resume Data File</div>
-                <a class="theme-button" onclick="EmptyFormOpen()">Enter Resume Details</a>
+                <a class="theme-button-1" onclick="EmptyFormOpen()">Enter Resume Details</a>
                 <div class="subheading">OR</div>
                 <div class="subheading">Edit Generate Resume Data File</div>
-                <input class="theme-button" type="file" name="" id="">
+                <input class="theme-button-1" type="file" name="" id="">
             </div>
             <div class="step">
                 <div class="heading">Step : 2</div>
-                <div class="subheading">Fill Form to Generate Resume Data File</div>
-                <input class="theme-button" type="file" name="" id="">
+                <div class="subheading">Upload Generate Resume Data File from First Step</div>
+                <input class="theme-button-1" type="file" name="" id="">
             </div>
             <div class="step">
                 <div class="heading">Step : 3</div>
                 <div class="subheading">Select Below Resume Templates Of Your Choice</div>
                 <div class="buttonframe">
-                    <a href="./form.html" class="theme-button">Template-1</a>
-                    <a href="./form.html" class="theme-button">Template-2</a>
+                    <a href="./form.html" class="theme-button-1">Template-1</a>
+                    <a href="./form.html" class="theme-button-1">Template-2</a>
                 </div>
                 <div class="subheading caption">Please make sure to Print the page in A4 page size</div>
             </div>
