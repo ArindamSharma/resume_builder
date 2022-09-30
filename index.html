@@ -207,7 +207,7 @@
                     <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'por')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
-                    <div class="subheading">Achievements</div>
+                    <div class="subheading">Honors & Awards</div>
                     <!-- <div class="field-entry">
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
@@ -223,8 +223,8 @@
                     <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'achievements')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
-                    <div class="subheading">Certifications</div>
-                    <div class="field-entry">
+                    <div class="subheading">Licenses & certifications</div>
+                    <!-- <div class="field-entry">
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
@@ -235,11 +235,12 @@
                     <div class="field-entry">
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
-                    </div>
+                    </div> -->
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'certifications')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
-                    <div class="subheading">Extras</div>
-                    <div class="field-entry">
+                    <div class="subheading">Extras/Additionals</div>
+                    <!-- <div class="field-entry">
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div>
@@ -250,10 +251,12 @@
                     <div class="field-entry">
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
-                    </div>
+                    </div> -->
+                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'extras')">+ Add</button>
+                
                 </div>
             </div>
-            <button class="modal-save theme-button-2" onclick="ModalSave()">Save</button>
+            <button class="modal-save theme-button-2" onclick="ModalSave()" type="submit" src="asdasd.txt" output="jaon.txt">Generate File</button>
         </div>
     </div>
     <div class="container">
@@ -266,7 +269,7 @@
                 <a class="theme-button-1" onclick="EmptyFormOpen()">Enter Resume Details</a>
                 <div class="subheading">OR</div>
                 <div class="subheading">Edit Generate Resume Data File</div>
-                <input class="theme-button-1" type="file" name="" id="">
+                <input class="theme-button-1" type="file" name="filename" id="filename" onclick="Fileupladed()">
             </div>
             <div class="step">
                 <div class="heading">Step : 2</div>

@@ -9,105 +9,113 @@ const PROJ ="projects"
 const SKILL ="skills"
 const POR ="por"
 const ACHIEVE ="achievements"
+const CERT ="certifications"
+const EXTRAS ="extras"
 const STRUCT="structure"
 const COUNT="count"
 const CONTENT="content"
-const EXTRAINFO="extrainfo"
-// struct fromat=[
-//     0: labeltext : string ,
-//     1: tag : string (input,textarea),
-//     2: tag-type : string (text,number,month,checkbox,email),
-// ]
+const EXTRAPARAM="extrainfo"
+
+
+function struct(text,tag,tagdata,minput=0){
+    return {text,minput,tag:tag,tagdata:tagdata}
+}
+
 var jsondata={}
 jsondata[INTRO]={}
 jsondata[INTRO][COUNT]=0;
 jsondata[INTRO][STRUCT]=[
-    ["First Name","input","text",[],0],
-    ["Last Name","input","text",[],0],
-    ["Title","input","text",[],0],
-    ["Introduction/Summary","textarea","30-4",[],0],
-    ["Email","input","email",[],1],
-    ["Address","input","text",[],1],
-    ["Phone Number","input","number",[],1],
+    struct("First Name","input",{type:"text",sugession:[]}),
+    struct("Last Name","input",{type:"text",sugession:[]}),
+    struct("Title","input",{type:"text",sugession:[]}),
+    struct("Introduction/Summary","textarea",{cols:30,rows:4}),
+    struct("Email","input",{type:"email",sugession:[]},1),
+    struct("Address","input",{type:"text",sugession:[]},1),
+    struct("Phone Number","input",{type:"number",sugession:[]},1),
 ];
 jsondata[EDU]={}
 jsondata[EDU][COUNT]=0;
 jsondata[EDU][STRUCT]=[
     //format: [label-text ,input-tag ,tag ,type|(col-row),sugession,add:bool]
-    ["School/University","input","text",[],0],
-    ["School Location","input","text",[],0],
-    ["School Type","input","text",[
-        "Higher Secondary School",
-        "Senior Secondary School",
-        "Under-Graduation",
-        "Post-Graduation",
-    ],0],
-    ["Degree Type","input","text",[
-        "None",
-        "B.Tech",
-        "M.Tech",
-        "Dual Degree(B.Tech+M.Tech)",
-    ],0],
-    ["Degree","input","text",[
-        "None",
-        "Computer Science",
-        "Computer Science and Engineering"
-    ],0],
-    ["CGPA/Percentage","input","number",[],0],
-    ["To","input","month",[],0],
-    ["From","input","month",[],0],
-    ["Description","textarea","30-3",[]],
+   struct("School/University","input",{type:"text",sugession:[]},0),
+   struct("School Location","input",{type:"text",sugession:[]},0),
+   struct("School Type","input",{type:"text",sugession:["Higher Secondary School","Senior Secondary School","Under-Graduation","Post-Graduation",]},0),
+   struct("Degree Type","input",{type:"text",sugession:["None","B.Tech","M.Tech","Dual Degree(B.Tech+M.Tech)",]},0),
+   struct("Degree","input",{type:"text",sugession:["None","Computer Science","Computer Science and Engineering"]},0),
+   struct("CGPA/Percentage","input",{type:"number",sugession:[]},0),
+   struct("I am currently studying here.","input",{type:"checkbox",related:null,sugession:[]},0),
+   struct("To","input",{type:"month",sugession:[]},0),
+   struct("From","input",{type:"month",sugession:[]},0),
+   struct("Description","textarea",{cols:30,rows:3,sugession:[]},0),
 ]
 jsondata[EXP]={}
 jsondata[EXP][COUNT]=0;
 jsondata[EXP][STRUCT]=[
     //format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
-    ["Position","input","text",[],0],
-    ["Company","input","text",[],0],
-    ["Location","input","text",[],0],
-    ["Description","textarea","30-3",[],0],
-    ["I am currently working here.","input","checkbox",[],0],
-    ["To","input","month",[],0],
-    ["From","input","month",[]],
+   struct("Position","input",{type:"text",sugession:[]},0),
+   struct("Company","input",{type:"text",sugession:[]},0),
+   struct("Location","input",{type:"text",sugession:[]},0),
+   struct("Description","textarea",{cols:30,rows:3,sugession:[]},0),
+   struct("I am currently working here.","input",{type:"checkbox",related:"From",sugession:[]},0),
+   struct("To","input",{type:"month",sugession:[]},0),
+   struct("From","input",{type:"month",sugession:[]},0),
 ]
 jsondata[PROJ]={}
 jsondata[PROJ][COUNT]=0;
 jsondata[PROJ][STRUCT]=[
     // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
-    ["Title","input","text",[],0],
-    ["Description","textarea","30-5",[],0],
-    ["Skills (seperate with comma)","input","text",[],1],
-    ["Link","input","text",[],1],
-    ["I am currently working.","input","checkbox",[],0],
-    ["To","input","month",[],0],
-    ["From","input","month",[],0],
+   struct("Title","input",{type:"text",sugession:[]},0),
+   struct("Description","textarea",{cols:30,rows:5,sugession:[]},0),
+   struct("Skills (seperate with comma)","input",{type:"text",sugession:[]},1),
+   struct("Link","input",{type:"text",sugession:[]},1),
+   struct("I am currently working.","input",{type:"checkbox",sugession:[]},0),
+   struct("To","input",{type:"month",sugession:[]},0),
+   struct("From","input",{type:"month",sugession:[]},0),
 ]
 jsondata[SKILL]={}
 jsondata[SKILL][COUNT]=0;
 jsondata[SKILL][STRUCT]=[
     // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
-    ["Category","input","text",[],0],
-    ["Skills","input","text",[],1],
+   struct("Category","input",{type:"text",sugession:[],placeholder:"programminglanguage/Webtools/Frameworks/...etc"},0),
+   struct("Skills","input",{type:"text",sugession:[]},1),
 ]
 jsondata[POR]={}
 jsondata[POR][COUNT]=0;
 jsondata[POR][STRUCT]=[
     // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
-    ["Title","input","text",[],0],
-    ["Organization","input","text",[],0],
-    ["To","input","month",[],0],
-    ["From","input","month",[],0],
+   struct("Title","input",{type:"text",sugession:[]},0),
+   struct("Organization","input",{type:"text",sugession:[]},0),
+   struct("To","input",{type:"month",sugession:[]},0),
+   struct("From","input",{type:"month",sugession:[]},0),
 ]
 jsondata[ACHIEVE]={}
 jsondata[ACHIEVE][COUNT]=0;
 jsondata[ACHIEVE][STRUCT]=[
     // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
-    ["Title","input","text",[],0],
-    ["Organization","input","text",[],0],
-    ["Achieved","input","text",[],0],
-    ["Link","input","text",[],1],
-    ["To","input","month",[],0],
-    ["From","input","month",[],0],
+   struct("Title","input",{type:"text",sugession:[]},0),
+   struct("Organization","input",{type:"text",sugession:[]},0),
+   struct("Link","input",{type:"text",sugession:[]},1),
+   struct("To","input",{type:"month",sugession:[]},0),
+   struct("From","input",{type:"month",sugession:[]},0),
+]
+jsondata[CERT]={}
+jsondata[CERT][COUNT]=0;
+jsondata[CERT][STRUCT]=[
+    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
+   struct("Title","input",{type:"text",sugession:[]},0),
+   struct("Issued Organization","input",{type:"text",sugession:[]},0),
+   struct("Issued Date","input",{type:"month",sugession:[]},0),
+   struct("This credential does not expire","input",{type:"checkbox",sugession:[]},0),
+   struct("Expiration Date","input",{type:"month",sugession:[]},0),
+   struct("Creadential ID","input",{type:"month",sugession:[]},0),
+   struct("Creadential URL","input",{type:"url",sugession:[]},0),
+]
+jsondata[EXTRAS]={}
+jsondata[EXTRAS][COUNT]=0;
+jsondata[EXTRAS][STRUCT]=[
+    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
+   struct("Label","input",{type:"text",sugession:[]},0),
+   struct("Description","textarea",{cols:30,rows:5,sugession:[]},1),
 ]
 
 function OnLoad(){
@@ -132,48 +140,64 @@ function FormClose(){
 function ModalSave(){
     console.log(jsondata)
     console.log("Save the Data to File")
+    // let x= new FileReader()
+    // x.onload
 }
-function checkboxFunction1(element){
-    console.log("Check box clicked",element)
+function checkboxFor(element,related){
+    let rawdata=element.name.split("_")
+    let name=rawdata[0]
+    let index=rawdata[1]
+    console.log("Check box clicked",element.checked)
+    if(related!="null" && related!="undefined"){
+        if(element.checked==true){
+            document.getElementById(jsondata[name][index][related]["id"]).disabled=true
+        }
+        else{
+            document.getElementById(jsondata[name][index][related]["id"]).disabled=false
+        }
+    }
 }
 function createInputElement(fieldentrydata,uid){
     let inputbox=[];
-    if(fieldentrydata[1]=="input"){
+    if(fieldentrydata["tag"]=="input"){
         // input 
         let input=document.createElement("input")
         input.classList.add("input")
         input.setAttribute("name",uid)
         input.setAttribute("id",uid)
-        input.setAttribute("type",fieldentrydata[2])
+        input.setAttribute("type",fieldentrydata["tagdata"]["type"])
         
         //input types
-        if(fieldentrydata[2]=="checkbox"){
+        if(fieldentrydata["tagdata"]["type"]=="checkbox"){
             // label.textContent=""
             let checkboxfield=document.createElement("div")
             checkboxfield.classList.add("checkbox-field")
-            input.setAttribute("onclick",'checkboxFunction1(this)')
+            input.setAttribute("onclick",'checkboxFor(this,"'+fieldentrydata["tagdata"]["related"]+'")')
             checkboxfield.appendChild(input)
             
             let tmplabel=document.createElement("label")
             tmplabel.classList.add("label")
             tmplabel.setAttribute("for",uid)
-            tmplabel.textContent=fieldentrydata[0]
+            tmplabel.textContent=fieldentrydata["text"]
             checkboxfield.appendChild(tmplabel)
             inputbox.push(checkboxfield)
         }
-        else if(fieldentrydata[2]=="month"){
+        else if(fieldentrydata["tagdata"]["type"]=="month"){
             input.classList.add("date-input")
             inputbox.push(input)
         }
         else{//type : text,number,email
+            if(fieldentrydata["tagdata"]["placeholder"]!=undefined){
+                input.setAttribute("placeholder",fieldentrydata["tagdata"]["placeholder"])
+            }
             inputbox.push(input)
         }
         // Add Sugession (datalist)
-        if(fieldentrydata[3].length!=0){
+        if(fieldentrydata["tagdata"]["sugession"].length!=0){
             input.setAttribute("list",uid+"_datalist")
             let datalist=document.createElement("datalist")
             datalist.id=uid+"_datalist"
-            fieldentrydata[3].forEach(sugession => {
+            fieldentrydata["tagdata"]["sugession"].forEach(sugession => {
                 let option=document.createElement("option")
                 option.value=sugession
                 datalist.appendChild(option)
@@ -181,14 +205,14 @@ function createInputElement(fieldentrydata,uid){
             inputbox.push(datalist)
         }
     }
-    if(fieldentrydata[1]=="textarea"){
+    if(fieldentrydata["tag"]=="textarea"){
         // textarea 
         let textarea=document.createElement("textarea")
         textarea.classList.add("input")
         textarea.setAttribute("name",uid)
         textarea.setAttribute("id",uid)
-        textarea.setAttribute("cols",fieldentrydata[2].split("-")[0])
-        textarea.setAttribute("rows",fieldentrydata[2].split("-")[1])
+        textarea.setAttribute("cols",fieldentrydata["tagdata"]["cols"])
+        textarea.setAttribute("rows",fieldentrydata["tagdata"]["rows"])
 
         inputbox.push(textarea)
     }
@@ -196,23 +220,23 @@ function createInputElement(fieldentrydata,uid){
 }
 function AddEntry(element){
     // console.log(element)
-    let uid=element.getAttribute(EXTRAINFO).split("_")
+    let uid=element.getAttribute(EXTRAPARAM).split("_")
     console.log(uid)
     let name=uid[0]
     let index=uid[1]
     let fieldentrydata=jsondata[name][STRUCT][uid[2]]
-    let currentcount=jsondata[name][index][fieldentrydata[0]][COUNT]
+    let currentcount=jsondata[name][index][fieldentrydata["text"]][COUNT]
     // console.log(jsondata[name][index][fieldentrydata[0]][CONTENT])
     // console.log(fieldentrydata)
 
     let minputfield=document.createElement("div")
     minputfield.classList.add("minput-field",currentcount)
 
-    createInputElement(fieldentrydata,index+"_"+uid[2]+"_"+currentcount).forEach(input => {
+    createInputElement(fieldentrydata,name+"_"+index+"_"+uid[2]+"_"+currentcount).forEach(input => {
         minputfield.appendChild(input)
     });
-    jsondata[name][index][fieldentrydata[0]][CONTENT][currentcount]={
-        "id":index+"_"+uid[2]+"_"+currentcount,
+    jsondata[name][index][fieldentrydata["text"]][CONTENT][currentcount]={
+        "id":name+"_"+index+"_"+uid[2]+"_"+currentcount,
         "value":null
     }
 
@@ -220,16 +244,16 @@ function AddEntry(element){
     removebutton.classList.add("minput-button")
     removebutton.textContent="X"
     removebutton.setAttribute("onclick","RemoveEntry(this)")
-    removebutton.setAttribute(EXTRAINFO,element.getAttribute(EXTRAINFO)+"_"+currentcount)
+    removebutton.setAttribute(EXTRAPARAM,element.getAttribute(EXTRAPARAM)+"_"+currentcount)
     minputfield.appendChild(removebutton)
 
-    jsondata[name][index][fieldentrydata[0]][COUNT]+=1
+    jsondata[name][index][fieldentrydata["text"]][COUNT]+=1
     element.parentNode.insertBefore(minputfield,element.parentNode.children[element.parentNode.children.length-1])
     // console.log(minputfield)
 }
 function RemoveEntry(element){
-    let uid=element.getAttribute(EXTRAINFO).split("_")
-    delete jsondata[uid[0]][uid[1]][jsondata[uid[0]][STRUCT][uid[2]][0]][CONTENT][uid[3]]
+    let uid=element.getAttribute(EXTRAPARAM).split("_")
+    delete jsondata[uid[0]][uid[1]][jsondata[uid[0]][STRUCT][uid[2]]["text"]][CONTENT][uid[3]]
     console.log(element,uid)
     element.parentNode.remove()
 }
@@ -244,43 +268,34 @@ function createDivFieldEntryElement(data,fieldentrydata,uid){
     label.setAttribute("for",uid)
     
     
-    label.textContent=fieldentrydata[0]
-    if(fieldentrydata[2]=="checkbox"){//exception
+    label.textContent=fieldentrydata["text"]
+    if(fieldentrydata["tagdata"]["type"]=="checkbox"){//exception
         label.textContent=""
     }
     fieldentry.appendChild(label)
 
-    if(fieldentrydata[4]==1){
-        data[fieldentrydata[0]]={}
-        data[fieldentrydata[0]][COUNT]=0
-        data[fieldentrydata[0]][CONTENT]={}
-        // data[fieldentrydata[0]]["id"]=uid.slice(uid.search("_")+1)
-
-        // data[uid.slice(uid.search("_")+1)]={
-        //     COUNT:0,
-        //     "label":fieldentrydata[0],
-        //     "content":{}
-        // }
+    if(fieldentrydata["minput"]==1){
+        data[fieldentrydata["text"]]={}
+        data[fieldentrydata["text"]][COUNT]=0
+        data[fieldentrydata["text"]][CONTENT]={}
+        
         let minput=document.createElement("div")
         minput.classList.add("minput")
 
         let addbutton=document.createElement("button")
         addbutton.classList.add("minput-button")
         addbutton.setAttribute("onclick","AddEntry(this)")
-        addbutton.setAttribute(EXTRAINFO,uid)
+        addbutton.setAttribute(EXTRAPARAM,uid)
         addbutton.textContent="+ Add"
         minput.appendChild(addbutton)
         fieldentry.appendChild(minput)
     }
-    else{//fieldentrydata[4]==0
-        data[fieldentrydata[0]]={
-            "id":uid.slice(uid.search("_")+1),
+    else{//fieldentrydata[minput]==0
+        data[fieldentrydata["text"]]={
+            "id":uid,
             "value":null
         }
-        // data[uid.slice(uid.search("_")+1)]={
-        //     "label":fieldentrydata[0],
-        //     "value":null
-        // }
+        
         createInputElement(fieldentrydata,uid).forEach(input => {
             fieldentry.appendChild(input)
         });
@@ -310,7 +325,7 @@ function AddSubSection(element,name){
     addbutton.textContent="+ Add"
 
     let modalsubsection=document.createElement("div")
-    console.log(name,jsondata[name])
+    // console.log(name,jsondata[name])
     modalsubsection.classList.add("modal-subsection",jsondata[name][COUNT])
     // add button
     let removebutton=document.createElement("button")
