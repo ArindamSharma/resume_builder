@@ -10,6 +10,7 @@
 
     <!-- <script src="./resume_data.js"></script> -->
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="modal.css">
     <script type="text/javascript" src="./index.js"></script>
     
     <title>Welcome To Resume Builder</title>
@@ -269,12 +270,12 @@
                 <a class="theme-button-1" onclick="EmptyFormOpen()">Enter Resume Details</a>
                 <div class="subheading">OR</div>
                 <div class="subheading">Edit Generate Resume Data File</div>
-                <input class="theme-button-1" type="file" name="filename" id="filename" onclick="Fileupladed()">
+                <input class="theme-button-1" type="file" name="" id="" onchange="OpenFormWithFileUpload(this)">
             </div>
             <div class="step">
                 <div class="heading">Step : 2</div>
                 <div class="subheading">Upload Generate Resume Data File from First Step</div>
-                <input class="theme-button-1" type="file" name="" id="">
+                <input class="theme-button-1" type="file" name="" id="" onchange="FileUploaded(this)">
             </div>
             <div class="step">
                 <div class="heading">Step : 3</div>
@@ -287,6 +288,8 @@
             </div>
         </div>
     </div>
-
+    <div class="templates template-1"></div>
+    <div class="templates template-2"></div>
+    <div class="templates template-3"></div>
 </body>
 </html>
