@@ -1,7 +1,4 @@
-// console.log(Skills)
-// console.log(Experiences)
-// console.log(Projects)
-// console.log(Achievements)
+const TITLE="title"
 const INTRO="introduction"
 const EDU="educations"
 const EXP="experiences"
@@ -16,7 +13,6 @@ const COUNT="count"
 const CONTENT="content"
 const EXTRAPARAM="extrainfo"
 
-
 function struct(text,tag,tagdata,minput=0){
     return {text,minput,tag:tag,tagdata:tagdata}
 }
@@ -24,6 +20,7 @@ function struct(text,tag,tagdata,minput=0){
 var jsondata={}
 jsondata[INTRO]={}
 jsondata[INTRO][COUNT]=0;
+jsondata[INTRO][TITLE]="Introduction";
 jsondata[INTRO][STRUCT]=[
     struct("First Name","input",{type:"text",sugession:[]}),
     struct("Last Name","input",{type:"text",sugession:[]}),
@@ -35,8 +32,9 @@ jsondata[INTRO][STRUCT]=[
 ];
 jsondata[EDU]={}
 jsondata[EDU][COUNT]=0;
+jsondata[EDU][TITLE]="Education";
 jsondata[EDU][STRUCT]=[
-    //format: [label-text ,input-tag ,tag ,type|(col-row),sugession,add:bool]
+    
    struct("School/University","input",{type:"text",sugession:[]},0),
    struct("School Location","input",{type:"text",sugession:[]},0),
    struct("School Type","input",{type:"text",sugession:["Higher Secondary School","Senior Secondary School","Under-Graduation","Post-Graduation",]},0),
@@ -50,8 +48,8 @@ jsondata[EDU][STRUCT]=[
 ]
 jsondata[EXP]={}
 jsondata[EXP][COUNT]=0;
+jsondata[EXP][TITLE]="Experiences";
 jsondata[EXP][STRUCT]=[
-    //format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Position","input",{type:"text",sugession:[]},0),
    struct("Company","input",{type:"text",sugession:[]},0),
    struct("Location","input",{type:"text",sugession:[]},0),
@@ -62,8 +60,8 @@ jsondata[EXP][STRUCT]=[
 ]
 jsondata[PROJ]={}
 jsondata[PROJ][COUNT]=0;
+jsondata[PROJ][TITLE]="Projects";
 jsondata[PROJ][STRUCT]=[
-    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Title","input",{type:"text",sugession:[]},0),
    struct("Description","textarea",{cols:30,rows:5,sugession:[]},0),
    struct("Skills (seperate with comma)","input",{type:"text",sugession:[]},1),
@@ -74,15 +72,15 @@ jsondata[PROJ][STRUCT]=[
 ]
 jsondata[SKILL]={}
 jsondata[SKILL][COUNT]=0;
+jsondata[SKILL][TITLE]="Skills";
 jsondata[SKILL][STRUCT]=[
-    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
-   struct("Category","input",{type:"text",sugession:[],placeholder:"programminglanguage/Webtools/Frameworks/...etc"},0),
+    struct("Category","input",{type:"text",sugession:[],placeholder:"programminglanguage/Webtools/Frameworks/...etc"},0),
    struct("Skills","input",{type:"text",sugession:[]},1),
 ]
 jsondata[POR]={}
 jsondata[POR][COUNT]=0;
+jsondata[POR][TITLE]="Position Of Responsibilities";
 jsondata[POR][STRUCT]=[
-    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Title","input",{type:"text",sugession:[]},0),
    struct("Organization","input",{type:"text",sugession:[]},0),
    struct("To","input",{type:"month",sugession:[]},0),
@@ -90,8 +88,8 @@ jsondata[POR][STRUCT]=[
 ]
 jsondata[ACHIEVE]={}
 jsondata[ACHIEVE][COUNT]=0;
+jsondata[ACHIEVE][TITLE]="Honors & Awards";
 jsondata[ACHIEVE][STRUCT]=[
-    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Title","input",{type:"text",sugession:[]},0),
    struct("Organization","input",{type:"text",sugession:[]},0),
    struct("Link","input",{type:"text",sugession:[]},1),
@@ -100,8 +98,8 @@ jsondata[ACHIEVE][STRUCT]=[
 ]
 jsondata[CERT]={}
 jsondata[CERT][COUNT]=0;
+jsondata[CERT][TITLE]="Licenses & Certifications";
 jsondata[CERT][STRUCT]=[
-    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Title","input",{type:"text",sugession:[]},0),
    struct("Issued Organization","input",{type:"text",sugession:[]},0),
    struct("Issued Date","input",{type:"month",sugession:[]},0),
@@ -112,32 +110,89 @@ jsondata[CERT][STRUCT]=[
 ]
 jsondata[EXTRAS]={}
 jsondata[EXTRAS][COUNT]=0;
+jsondata[EXTRAS][TITLE]="Extras/Additionals";
 jsondata[EXTRAS][STRUCT]=[
-    // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Label","input",{type:"text",sugession:[]},0),
    struct("Description","textarea",{cols:30,rows:5,sugession:[]},1),
 ]
 
 function OnLoad(){
-    GenerateIntro()
-    // document.getElementsByClassName("intro")[0].children[0]
-    // AddSubSection(document.getElementsByClassName("intro")[0].children[0],INTRO)
+}
+
+function createElement(tag,classes="",text="",attributes={}){
+    let element=document.createElement(tag);
+    classes.split(" ").forEach(cl => {
+        if(cl.length!=0){element.classList.add(cl);}
+    });
+    element.textContent=text;
+    for (const iterator of Object.keys(attributes)) {
+        element.setAttribute(iterator,attributes[iterator]);
+    }
+    return element;
 }
 
 function FormOpen(data){
-    console.log("Form Opened with ",data)
-    document.getElementsByClassName("modal")[0].classList.add("modal-show")
-    document.body.setAttribute('scroll',"no")
-    document.body.setAttribute('style',"overflow: hidden;")
-    if(data.length==0){
+    let modal=document.getElementsByClassName("modal")[0]
+    modal.classList.add("modal-show")
+    
+    let modalcontainer=createElement("div","modal-container");
+    let modalclosebutton=createElement("button","modal-close theme-button-2 close-button","X",{"onclick":"FormClose()","type":"button"})
+    modalcontainer.appendChild(modalclosebutton)
+
+    let modalheading=createElement("div","heading","Resume Detailes Generator")
+    modalcontainer.appendChild(modalheading)
+
+    let modalsection=createElement("div","modal-sections")
+
+    if(data.length==0){//for empty form
+        console.log("Empty Form Opened")
         for (const element of Object.keys(jsondata)) {
-            console.log(element)
+            let section=createElement("div","modal-section "+element)
+            
+            let subheading=createElement("div","subheading",jsondata[element][TITLE])
+            section.appendChild(subheading)
+
+            let modalsubsection=createElement("div","modal-subsection")
+            let index=0
+            jsondata[element][jsondata[element][COUNT]]={}
+            jsondata[element][STRUCT].forEach(fieldentrydata => {
+                let uid=element.toLowerCase()+"_"+jsondata[element][COUNT]+"_"+index;
+                // console.log(fieldentrydata,projectcount)
+                modalsubsection.appendChild(createDivFieldEntryElement(jsondata[element][jsondata[element][COUNT]],fieldentrydata,uid))
+                index+=1;
+            });
+            section.appendChild(modalsubsection);
+
+            if(element!=INTRO){
+                let sectionaddbutton=createElement("button","add-subsection theme-button-2","+ Add",{"type":"button","onclick":"AddSubSection(this,'"+element+"')"})
+                section.appendChild(sectionaddbutton)
+            }
+            modalsection.appendChild(section)
         }
     }
+    else{//for uploaded file
+        console.log("Form Opened with Data",data)
+
+    }
+
+    modalcontainer.appendChild(modalsection)
+
+    let modalsavebutton=createElement("button","modal-save theme-button-2","Generate File",{"type":"button","onclick":"ModalSave()"})
+    modalcontainer.appendChild(modalsavebutton)
+
+    modal.appendChild(modalcontainer)
+    console.log(modalcontainer)
+    document.body.setAttribute('scroll',"no")
+    document.body.setAttribute('style',"overflow: hidden;")
+    
+}
+function FormReset(){
+    document.getElementsByClassName("modal-sections")[0].scrollTo(0,0); //reset scroll
 }
 function FormClose(){
-    FormReset()
-    document.getElementsByClassName("modal")[0].classList.remove("modal-show")
+    let modal=document.getElementsByClassName("modal")[0]
+    modal.classList.remove("modal-show")
+    modal.textContent=""
     document.body.removeAttribute('scroll',"no")
     document.body.removeAttribute('style',"overflow: hidden;")
 }
@@ -153,15 +208,10 @@ function ModalSave(){
     a.setAttribute("download", 'userdata.json');
     a.click();
 }
-function FormReset(){
-    document.getElementsByClassName("modal-sections")[0].scrollTo(0,0);
-    
-}
 async function OpenFormWithFileUpload(element){
     
     await FileUploaded(element)
-    console.log(jsondata)
-    
+    console.log("OpenFormWithFileUpload",jsondata)
     FormOpen(jsondata)
 }
 function updateJsonDataFromForm(data){
@@ -201,6 +251,9 @@ async function FileUploaded(element){
         updateJsonDataFromParsedJsonData(JSON.parse(jd))
     }
 }
+
+
+
 function checkboxFor(element,related){
     let rawdata=element.name.split("_")
     let name=rawdata[0]

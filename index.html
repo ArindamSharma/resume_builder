@@ -12,14 +12,14 @@
     <!-- <script src="./resume_data.js"></script> -->
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="modal.css">
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./new_index.js"></script>
     
     <title>Welcome To Resume Builder</title>
 </head>
 <body class="bg-image" onload="OnLoad()">
     <div class="modal">
         <div class="modal-container">
-            <button class="modal-close theme-button-2 close-button" onclick="FormClose()">X</button>
+            <button type="button" class="modal-close theme-button-2 close-button" onclick="FormClose()">X</button>
             <div class="heading">Resume Details Generator</div>
             <div class="modal-sections">
                 <div class="modal-section intro">
@@ -56,7 +56,7 @@
                 <div class="modal-section education">
                     <div class="subheading">Education</div>
                     <!-- <div class="modal-subsection">
-                        <button class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Educations')">Remove</button>
+                        <button type="button" class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Educations')">Remove</button>
                         <div class="field-entry">
                             <label class="label" for="">School/University</label>
                             <input class="input" type="text" name="name" id="name">
@@ -102,12 +102,12 @@
                             <input class="input" type="month" name="name" id="name">
                         </div>
                     </div> -->
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'educations')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'educations')">+ Add</button>
                 </div>
                 <div class="modal-section experiences">
                     <div class="subheading">Experiences</div>
                     <!-- <div class="modal-subsection">
-                        <button class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Experiences')">Remove</button>    
+                        <button type="button" class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Experiences')">Remove</button>    
                         <div class="field-entry">
                             <label class="label" for="">Position</label>
                             <input class="input" type="text" name="name" id="name">
@@ -136,7 +136,7 @@
                             <input class="input" type="text" name="name" id="name">
                         </div>
                     </div> -->
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'experiences')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'experiences')">+ Add</button>
                 </div>
                 <div class="modal-section skills">
                     <div class="subheading">Skills</div>
@@ -152,12 +152,12 @@
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div> -->
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'skills')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'skills')">+ Add</button>
                 </div>
                 <div class="modal-section project">
                     <div class="subheading">Projects</div>
                     <!-- <div class="modal-subsection">
-                        <button class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Projects')">Remove</button>
+                        <button type="button" class="remove-subsection theme-button-2 remove-button" onclick="RemoveSubSection(this,'Projects')">Remove</button>
                         <div class="field-entry">
                             <label class="label" for="edu_0_0_input">Title</label>
                             <input class="input" name="edu_0_0_input" id="edu_0_0_input" type="text">
@@ -175,9 +175,9 @@
                             <div class="minput">
                                 <div class="minput-field">
                                     <input class="minput-input" type="text">
-                                    <button class="minput-button">X</button>
+                                    <button type="button" class="minput-button">X</button>
                                 </div>
-                                <button class="minput-button">+ Add</button>
+                                <button type="button" class="minput-button">+ Add</button>
                             </div>
                         </div>
                         <div class="field-entry">
@@ -189,7 +189,7 @@
                             <input class="input date-input" name="edu_0_5_input" id="edu_0_5_input" type="month">
                         </div>
                     </div> -->
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'projects')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'projects')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Position Of Responsibilities</div>
@@ -206,7 +206,7 @@
                         <input class="input" type="text" name="name" id="name">
                     </div> -->
                     
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'por')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'por')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Honors & Awards</div>
@@ -222,7 +222,7 @@
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div> -->
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'achievements')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'achievements')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Licenses & certifications</div>
@@ -238,7 +238,7 @@
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div> -->
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'certifications')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'certifications')">+ Add</button>
                 </div>
                 <div class="modal-section contact">
                     <div class="subheading">Extras/Additionals</div>
@@ -254,11 +254,11 @@
                         <label class="label" for="">First Name</label>
                         <input class="input" type="text" name="name" id="name">
                     </div> -->
-                    <button class="add-subsection theme-button-2" onclick="AddSubSection(this,'extras')">+ Add</button>
+                    <button type="button" class="add-subsection theme-button-2" onclick="AddSubSection(this,'extras')">+ Add</button>
                 
                 </div>
             </div>
-            <button class="modal-save theme-button-2" onclick="ModalSave()" type="submit" src="asdasd.txt" output="jaon.txt">Generate File</button>
+            <button type="button" class="modal-save theme-button-2" onclick="ModalSave()" >Generate File</button>
         </div>
     </div>
     <div class="container">
@@ -268,10 +268,10 @@
             <div class="step">
                 <div class="heading">Step : 1</div>
                 <div class="subheading">Fill Form to Generate Resume Data File</div>
-                <a class="theme-button-1" onclick="EmptyFormOpen()">Enter Resume Details</a>
+                <a class="theme-button-1" onclick="FormOpen([])">Enter Resume Details</a>
                 <div class="subheading">OR</div>
                 <div class="subheading">Edit Generate Resume Data File</div>
-                <input class="theme-button-1" type="file" name="" id="" onchange="OpenFormWithFileUpload(this)">
+                <input class="theme-button-1" type="file" name="" id="" oninput="OpenFormWithFileUpload(this)">
             </div>
             <div class="step">
                 <div class="heading">Step : 2</div>
