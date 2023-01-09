@@ -113,16 +113,25 @@ jsondata[EXTRA][STRUCTURE]=[
    struct("Label","input",{type:"text",sugession:[]},0),
    struct("Description","textarea",{cols:30,rows:5,sugession:[]},1),
 ]
+function generateEntryField(){
+    let field=document.createElement("div");
+    field.classList.add("field");
 
+    return field;
+}
 function generateCateogrySection(categoryname,sectionindex,data={}){
     let section=document.createElement("div");
-    section.classList.add();
+    section.classList.add("section",categoryname);
 
     let sectioncontent=document.createElement("div");
-    sectioncontent.classList.add();
+    sectioncontent.classList.add("sectioncontent",sectionindex);
+
+    jsondata[categoryname][STRUCTURE].forEach(structelement => {
+        sectioncontent.appendChild(generateEntryField(structelement,data[structelement.text]))
+    });
 
     let removesectionbutton=document.createElement("button");
-    removesectionbutton.classList.add();
+    removesectionbutton.classList.add("sectionbutton");
     removesectionbutton.setAttribute("onclick","removeSection(this)");
 
     section.appendChild(sectioncontent);
@@ -132,26 +141,27 @@ function generateCateogrySection(categoryname,sectionindex,data={}){
 function generateCategory(categoryname,data={}){
     console.log("Generating Category :",categoryname);
     let category=document.createElement("div");
-    category.classList.add();
+    category.classList.add("category");
 
     let categortitle=document.createElement("label");
-    categortitle.classList.add();
+    categortitle.classList.add("categorylabel");
     categortitle.textContent=categoryname;
     
-    if(data[COUNT]!=0){
+    // console.log(data);
+    if(data[COUNT]==0){
+        console.log("Empty Data");
+        // category.appendChild(generateCateogrySection(categoryname,i));
+    }
+    else{
         console.log("Data Exist");
         for(let i=0;i<data[COUNT];i++){
             category.appendChild(generateCateogrySection(categoryname,i,data[i]));
         }
     }
-    else{
-        console.log("Empty Data");
-        // category.appendChild(generateCateogrySection(categoryname,i));
-    }
     
     let addsectionbutton=document.createElement("button");
-    addsectionbutton.classList.add();
-    addsectionbutton.setAttribute("onclick","addSection(this)");
+    addsectionbutton.classList.add("sectionbutton");
+    addsectionbutton.setAttribute("onclick","addSection(this,'"+categoryname+"')");
     addsectionbutton.textContent="+ADD";
     addsectionbutton.type="button";
     
@@ -171,6 +181,15 @@ function generateForm(element,data={}){
             element.appendChild(generateCategory(category));
         }
     });
+}
+function addSection(element,categoryname){
+    // let tmpelement=element;
+    console.log(element.parentNode);
+    element.parentNode.insertBefore(generateCateogrySection(categoryname,0),element);
+}
+function removeSection(element){
+    console.log(element);
+    element.parentNode.remove();
 }
 document.body.onload=generateForm(document.getElementsByClassName("main")[0],{});
 
