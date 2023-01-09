@@ -114,11 +114,17 @@ jsondata[EXTRA][STRUCTURE]=[
    struct("Description","textarea",{cols:30,rows:5,sugession:[]},1),
 ]
 
-function generateCateogrySection(categoryname,sectioncount,data={}){
+function generateCateogrySection(categoryname,sectionindex,data={}){
     let section=document.createElement("div");
+    section.classList.add();
+
     let sectioncontent=document.createElement("div");
+    sectioncontent.classList.add();
 
     let removesectionbutton=document.createElement("button");
+    removesectionbutton.classList.add();
+    removesectionbutton.setAttribute("onclick","removeSection(this)");
+
     section.appendChild(sectioncontent);
     section.appendChild(removesectionbutton);
     return section;
@@ -126,6 +132,12 @@ function generateCateogrySection(categoryname,sectioncount,data={}){
 function generateCategory(categoryname,data={}){
     console.log("Generating Category :",categoryname);
     let category=document.createElement("div");
+    category.classList.add();
+
+    let categortitle=document.createElement("label");
+    categortitle.classList.add();
+    categortitle.textContent=categoryname;
+    
     if(data[COUNT]!=0){
         console.log("Data Exist");
         for(let i=0;i<data[COUNT];i++){
@@ -136,7 +148,14 @@ function generateCategory(categoryname,data={}){
         console.log("Empty Data");
         // category.appendChild(generateCateogrySection(categoryname,i));
     }
+    
     let addsectionbutton=document.createElement("button");
+    addsectionbutton.classList.add();
+    addsectionbutton.setAttribute("onclick","addSection(this)");
+    addsectionbutton.textContent="+ADD";
+    addsectionbutton.type="button";
+    
+    category.appendChild(categortitle);
     category.appendChild(addsectionbutton);
     return category;
 }
