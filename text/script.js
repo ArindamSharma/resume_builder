@@ -11,10 +11,10 @@ const STRUCTURE="structure"
 const COUNT="count"
 const CONTENT="content"
 const EXTRAINFO="extrainfo"
-const ORDER=[INTRO,EXPERIENCE,PROJECT,SKILL,CERTIFICATE,ACHIEVEMENT,POR]
+const ORDER=[EXPERIENCE,PROJECT,SKILL,CERTIFICATE,ACHIEVEMENT,POR]
 
 function struct(text,tag,tagdata,minput=0){
-    return {text,minput,tag:tag,tagdata:tagdata}
+    return {text,tag:tag,tagdata:tagdata,minput}
 }
 
 var jsondata={}
@@ -113,9 +113,27 @@ jsondata[EXTRA][STRUCTURE]=[
    struct("Label","input",{type:"text",sugession:[]},0),
    struct("Description","textarea",{cols:30,rows:5,sugession:[]},1),
 ]
-function generateEntryField(){
+function generateEntryField(structure,data){
+    console.log(structure,data);
     let field=document.createElement("div");
     field.classList.add("field");
+
+    let title=document.createElement("label");
+    title.textContent=structure.text;
+
+    let entry=document.createElement("div");
+    for(let i=0;i<((data==undefined||data[COUNT]==undefined)?1:data[COUNT]);i++){
+        let e=document.createElement(structure.tag);
+        entry.appendChild(e);
+    }
+    if(data!=undefined){
+        let addentry=document.createElement("button");
+        addentry.setAttribute("onclick","addInput(this)");
+        addentry.textContent="+ADD";
+        entry.appendChild(addentry);
+    }
+    field.appendChild(title);
+    field.appendChild(entry);
 
     return field;
 }
@@ -126,6 +144,7 @@ function generateCateogrySection(categoryname,sectionindex,data={}){
     let sectioncontent=document.createElement("div");
     sectioncontent.classList.add("sectioncontent",sectionindex);
 
+    console.log(jsondata[categoryname][STRUCTURE]);
     jsondata[categoryname][STRUCTURE].forEach(structelement => {
         sectioncontent.appendChild(generateEntryField(structelement,data[structelement.text]))
     });
@@ -133,12 +152,13 @@ function generateCateogrySection(categoryname,sectionindex,data={}){
     let removesectionbutton=document.createElement("button");
     removesectionbutton.classList.add("sectionbutton");
     removesectionbutton.setAttribute("onclick","removeSection(this)");
+    removesectionbutton.textContent="Remove";
 
     section.appendChild(sectioncontent);
     section.appendChild(removesectionbutton);
     return section;
 }
-function generateCategory(categoryname,data={}){
+function generateCategory(categoryname,data={},addablesection=true){
     console.log("Generating Category :",categoryname);
     let category=document.createElement("div");
     category.classList.add("category");
@@ -146,11 +166,11 @@ function generateCategory(categoryname,data={}){
     let categortitle=document.createElement("label");
     categortitle.classList.add("categorylabel");
     categortitle.textContent=categoryname;
-    
+
     // console.log(data);
-    if(data[COUNT]==0){
+    if(data[COUNT]==0 || data[COUNT]==undefined){
         console.log("Empty Data");
-        // category.appendChild(generateCateogrySection(categoryname,i));
+        // category.appendChild(generateCateogrySection(categoryname,));
     }
     else{
         console.log("Data Exist");
@@ -158,26 +178,29 @@ function generateCategory(categoryname,data={}){
             category.appendChild(generateCateogrySection(categoryname,i,data[i]));
         }
     }
-    
+
     let addsectionbutton=document.createElement("button");
     addsectionbutton.classList.add("sectionbutton");
     addsectionbutton.setAttribute("onclick","addSection(this,'"+categoryname+"')");
     addsectionbutton.textContent="+ADD";
     addsectionbutton.type="button";
-    
+
     category.appendChild(categortitle);
-    category.appendChild(addsectionbutton);
+    if(addablesection){
+        category.appendChild(addsectionbutton);
+    }
     return category;
 }
 function generateForm(element,data={}){
     console.log(jsondata);
+    element.appendChild(generateCategory(INTRO,data[INTRO],false));
     ORDER.forEach(category => {
         if(data[category]!=undefined){
-            console.log("Passed Data ",category,data[category]);
+            console.log("Existing Category ",category,data[category]);
             element.appendChild(generateCategory(category,data[category]));
         }
         else{
-            console.log("Default Data ",category);
+            console.log("Default Category ",category);
             element.appendChild(generateCategory(category));
         }
     });
@@ -191,6 +214,16 @@ function removeSection(element){
     console.log(element);
     element.parentNode.remove();
 }
-document.body.onload=generateForm(document.getElementsByClassName("main")[0],{});
-
-// github token :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
+function addEntry(element){
+    console.log(element);
+}
+function Testing(element){
+    // element.appendChild(generateCateogrySection(INTRO,0,{}));
+    // element.appendChild(generateEntryField(jsondata[INTRO][STRUCTURE][0],undefined));
+    element.appendChild(generateEntryField(jsondata[INTRO][STRUCTURE][0],{
+        "id": "introduction_0_3",
+        "value": "sldkfnas a;sldkj fa dlak jsdlk a a;l skdj alsk al ksdj; "
+    }));
+}
+// document.body.onload=generateForm(document.getElementsByClassName("main")[0],{});
+document.body.onload=Testing(document.getElementsByClassName("main")[0]);
