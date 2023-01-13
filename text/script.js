@@ -122,22 +122,40 @@ function generateEntryField(structure,data){
     title.textContent=structure.text;
 
     let entry=document.createElement("div");
-    for(let i=0;i<((data==undefined||data[COUNT]==undefined)?1:data[COUNT]);i++){
-        let e=document.createElement(structure.tag);
-        entry.appendChild(e);
-    }
-    if(data!=undefined){
+
+    if(structure.minput==1){
+        for(let i=0;i<data[COUNT];i++){
+            let con=document.createElement("div");
+
+            let e=document.createElement(structure.tag);
+            e.value=data["content"][i]["value"]==undefined?"":data["content"][i]["value"];
+            
+            let b= document.createElement("button");
+            b.setAttribute("onclick","removeInputEntry(this)");
+            b.textContent="X";
+
+            con.appendChild(e);
+            con.appendChild(b);
+            entry.appendChild(con);
+        }
+
         let addentry=document.createElement("button");
-        addentry.setAttribute("onclick","addInput(this)");
+        addentry.setAttribute("onclick","addInputEntry(this)");
         addentry.textContent="+ADD";
         entry.appendChild(addentry);
     }
+    else{
+        let e=document.createElement(structure.tag);
+        e.value=data["value"]==undefined?"":data["value"];
+        entry.appendChild(e);
+    }
+
     field.appendChild(title);
     field.appendChild(entry);
 
     return field;
 }
-function generateCateogrySection(categoryname,sectionindex,data={}){
+function generateSection(categoryname,sectionindex,data={}){
     let section=document.createElement("div");
     section.classList.add("section",categoryname);
 
@@ -170,12 +188,12 @@ function generateCategory(categoryname,data={},addablesection=true){
     // console.log(data);
     if(data[COUNT]==0 || data[COUNT]==undefined){
         console.log("Empty Data");
-        // category.appendChild(generateCateogrySection(categoryname,));
+        // category.appendChild(generateSection(categoryname,));
     }
     else{
         console.log("Data Exist");
         for(let i=0;i<data[COUNT];i++){
-            category.appendChild(generateCateogrySection(categoryname,i,data[i]));
+            category.appendChild(generateSection(categoryname,i,data[i]));
         }
     }
 
@@ -208,22 +226,39 @@ function generateForm(element,data={}){
 function addSection(element,categoryname){
     // let tmpelement=element;
     console.log(element.parentNode);
-    element.parentNode.insertBefore(generateCateogrySection(categoryname,0),element);
+    element.parentNode.insertBefore(generateSection(categoryname,0),element);
 }
 function removeSection(element){
     console.log(element);
     element.parentNode.remove();
 }
-function addEntry(element){
+function addInputEntry(element){
+    console.log(element);
+}
+function removeInputEntry(element){
     console.log(element);
 }
 function Testing(element){
-    // element.appendChild(generateCateogrySection(INTRO,0,{}));
+    // element.appendChild(generateSection(INTRO,0,{}));
     // element.appendChild(generateEntryField(jsondata[INTRO][STRUCTURE][0],undefined));
     element.appendChild(generateEntryField(jsondata[INTRO][STRUCTURE][0],{
         "id": "introduction_0_3",
         "value": "sldkfnas a;sldkj fa dlak jsdlk a a;l skdj alsk al ksdj; "
     }));
+    element.appendChild(generateEntryField(jsondata[INTRO][STRUCTURE][5],{
+        "count": 2,
+        "content": {
+            "0": {
+                "id": "introduction_0_4_0",
+                "value": "asd fasd fas df as"
+            },
+            "1": {
+                "id": "introduction_0_4_1",
+                "value": "a sdf asd fasd fas df"
+            }
+        }
+    }));
+    element.appendChild(generateEntryField(jsondata[INTRO][STRUCTURE][2],{}));
 }
 // document.body.onload=generateForm(document.getElementsByClassName("main")[0],{});
 document.body.onload=Testing(document.getElementsByClassName("main")[0]);
