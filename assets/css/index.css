@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Righteous';
+    src: url(../font/Righteous-Regular.ttf);
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url(../font/Oswald-VariableFont_wght.ttf);
+}
+body{
+    margin: 0;
+    background-image: url(../img/bg1.jpg);
+    /* background-repeat: no-repeat; */
+    background-size: 100% auto;
+    background-position: top;
+    overflow: hidden;
+}
+.frame{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    margin: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.151);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: overlay;
+    top: 0;
+}

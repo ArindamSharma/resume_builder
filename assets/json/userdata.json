@@ -1,0 +1,797 @@
+{
+    "introduction": {
+        "0": {
+            "First Name": {
+                "id": "introduction_0_0",
+                "value": "arindam sharma"
+            },
+            "Last Name": {
+                "id": "introduction_0_1",
+                "value": "Arindasma"
+            },
+            "Title": {
+                "id": "introduction_0_2",
+                "value": "sldkfjalsdkfjasd "
+            },
+            "Introduction/Summary": {
+                "id": "introduction_0_3",
+                "value": "sldkfnas a;sldkj fa dlak jsdlk a a;l skdj alsk al ksdj; "
+            },
+            "Email": {
+                "count": 2,
+                "content": {
+                    "0": {
+                        "id": "introduction_0_4_0",
+                        "value": "asd fasd fas df as"
+                    },
+                    "1": {
+                        "id": "introduction_0_4_1",
+                        "value": "a sdf asd fasd fas df"
+                    }
+                }
+            },
+            "Address": {
+                "count": 3,
+                "content": {
+                    "0": {
+                        "id": "introduction_0_5_0",
+                        "value": "a sdf asd fasd f"
+                    },
+                    "1": {
+                        "id": "introduction_0_5_1",
+                        "value": "asd fa df asdf a sda sdff "
+                    },
+                    "2": {
+                        "id": "introduction_0_5_2",
+                        "value": "a sdfa sd fasd f"
+                    }
+                }
+            },
+            "Phone Number": {
+                "count": 2,
+                "content": {
+                    "0": {
+                        "id": "introduction_0_6_0",
+                        "value": "234523452345"
+                    },
+                    "1": {
+                        "id": "introduction_0_6_1",
+                        "value": "234523452345"
+                    }
+                }
+            }
+        },
+        "count": 0,
+        "structure": [
+            {
+                "text": "First Name",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Last Name",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Title",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Introduction/Summary",
+                "minput": 0,
+                "tag": "textarea",
+                "tagdata": {
+                    "cols": 30,
+                    "rows": 4
+                }
+            },
+            {
+                "text": "Email",
+                "minput": 1,
+                "tag": "input",
+                "tagdata": {
+                    "type": "email",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Address",
+                "minput": 1,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Phone Number",
+                "minput": 1,
+                "tag": "input",
+                "tagdata": {
+                    "type": "number",
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "educations": {
+        "0": {
+            "School/University": {
+                "id": "educations_0_0",
+                "value": "sadfg sdf sdf"
+            },
+            "School Location": {
+                "id": "educations_0_1",
+                "value": " gsd fgsd fgs df"
+            },
+            "School Type": {
+                "id": "educations_0_2",
+                "value": "gsdf gsdf "
+            },
+            "Degree Type": {
+                "id": "educations_0_3",
+                "value": "gsdf gsdf g"
+            },
+            "Degree": {
+                "id": "educations_0_4",
+                "value": "sdf gsdf g"
+            },
+            "CGPA/Percentage": {
+                "id": "educations_0_5",
+                "value": "234"
+            },
+            "I am currently studying here.": {
+                "id": "educations_0_6",
+                "value": "on"
+            },
+            "To": {
+                "id": "educations_0_7",
+                "value": ""
+            },
+            "From": {
+                "id": "educations_0_8",
+                "value": ""
+            },
+            "Description": {
+                "id": "educations_0_9",
+                "value": "qwretwsedfgsd fgs dfg sdfg "
+            }
+        },
+        "count": 1,
+        "structure": [
+            {
+                "text": "School/University",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "School Location",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "School Type",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": [
+                        "Higher Secondary School",
+                        "Senior Secondary School",
+                        "Under-Graduation",
+                        "Post-Graduation"
+                    ]
+                }
+            },
+            {
+                "text": "Degree Type",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": [
+                        "None",
+                        "B.Tech",
+                        "M.Tech",
+                        "Dual Degree(B.Tech+M.Tech)"
+                    ]
+                }
+            },
+            {
+                "text": "Degree",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": [
+                        "None",
+                        "Computer Science",
+                        "Computer Science and Engineering"
+                    ]
+                }
+            },
+            {
+                "text": "CGPA/Percentage",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "number",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "I am currently studying here.",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "checkbox",
+                    "related": null,
+                    "sugession": []
+                }
+            },
+            {
+                "text": "To",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "From",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Description",
+                "minput": 0,
+                "tag": "textarea",
+                "tagdata": {
+                    "cols": 30,
+                    "rows": 3,
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "experiences": {
+        "0": {
+            "Position": {
+                "id": "experiences_0_0",
+                "value": "dfgsdfgsdfg"
+            },
+            "Company": {
+                "id": "experiences_0_1",
+                "value": "ssdfgsdfg"
+            },
+            "Location": {
+                "id": "experiences_0_2",
+                "value": "sdfgsdf"
+            },
+            "Description": {
+                "id": "experiences_0_3",
+                "value": "gsdfg3werwef werg wer g"
+            },
+            "I am currently working here.": {
+                "id": "experiences_0_4",
+                "value": "on"
+            },
+            "To": {
+                "id": "experiences_0_5",
+                "value": "3455-01"
+            },
+            "From": {
+                "id": "experiences_0_6",
+                "value": ""
+            }
+        },
+        "1": {
+            "Position": {
+                "id": "experiences_1_0",
+                "value": "sdf gsdf gsdfg sdfg "
+            },
+            "Company": {
+                "id": "experiences_1_1",
+                "value": "dfg sdfg "
+            },
+            "Location": {
+                "id": "experiences_1_2",
+                "value": " sdfg s"
+            },
+            "Description": {
+                "id": "experiences_1_3",
+                "value": "sdfg sdfg sdf gsdfg"
+            },
+            "I am currently working here.": {
+                "id": "experiences_1_4",
+                "value": "on"
+            },
+            "To": {
+                "id": "experiences_1_5",
+                "value": ""
+            },
+            "From": {
+                "id": "experiences_1_6",
+                "value": ""
+            }
+        },
+        "count": 2,
+        "structure": [
+            {
+                "text": "Position",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Company",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Location",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Description",
+                "minput": 0,
+                "tag": "textarea",
+                "tagdata": {
+                    "cols": 30,
+                    "rows": 3,
+                    "sugession": []
+                }
+            },
+            {
+                "text": "I am currently working here.",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "checkbox",
+                    "related": "From",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "To",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "From",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "projects": {
+        "0": {
+            "Title": {
+                "id": "projects_0_0",
+                "value": "sdfgsdfg"
+            },
+            "Description": {
+                "id": "projects_0_1",
+                "value": "sdfgsdfg"
+            },
+            "Skills (seperate with comma)": {
+                "count": 2,
+                "content": {
+                    "0": {
+                        "id": "projects_0_2_0",
+                        "value": "sdfgsdfgsdfg"
+                    },
+                    "1": {
+                        "id": "projects_0_2_1",
+                        "value": "dfgsdfgsdfgsdfg"
+                    }
+                }
+            },
+            "Link": {
+                "count": 0,
+                "content": {}
+            },
+            "I am currently working.": {
+                "id": "projects_0_4",
+                "value": "on"
+            },
+            "To": {
+                "id": "projects_0_5",
+                "value": ""
+            },
+            "From": {
+                "id": "projects_0_6",
+                "value": ""
+            }
+        },
+        "count": 1,
+        "structure": [
+            {
+                "text": "Title",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Description",
+                "minput": 0,
+                "tag": "textarea",
+                "tagdata": {
+                    "cols": 30,
+                    "rows": 5,
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Skills (seperate with comma)",
+                "minput": 1,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Link",
+                "minput": 1,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "I am currently working.",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "checkbox",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "To",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "From",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "skills": {
+        "0": {
+            "Category": {
+                "id": "skills_0_0",
+                "value": "sdfgsdfg"
+            },
+            "Skills": {
+                "count": 6,
+                "content": {
+                    "0": {
+                        "id": "skills_0_1_0",
+                        "value": "dfgsdfg"
+                    },
+                    "1": {
+                        "id": "skills_0_1_1",
+                        "value": "sdfgsdfgsdfg"
+                    },
+                    "2": {
+                        "id": "skills_0_1_2",
+                        "value": "sdfgsdfgsdf"
+                    },
+                    "3": {
+                        "id": "skills_0_1_3",
+                        "value": "sdfgsdfgsd"
+                    },
+                    "4": {
+                        "id": "skills_0_1_4",
+                        "value": "sdfgsdfg"
+                    },
+                    "5": {
+                        "id": "skills_0_1_5",
+                        "value": "sfdgsdfg"
+                    }
+                }
+            }
+        },
+        "count": 1,
+        "structure": [
+            {
+                "text": "Category",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": [],
+                    "placeholder": "programminglanguage/Webtools/Frameworks/...etc"
+                }
+            },
+            {
+                "text": "Skills",
+                "minput": 1,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "por": {
+        "0": {
+            "Title": {
+                "id": "por_0_0",
+                "value": "sdfgsdfg"
+            },
+            "Organization": {
+                "id": "por_0_1",
+                "value": "sdfgsdfgsdfgsdfg"
+            },
+            "To": {
+                "id": "por_0_2",
+                "value": ""
+            },
+            "From": {
+                "id": "por_0_3",
+                "value": ""
+            }
+        },
+        "count": 1,
+        "structure": [
+            {
+                "text": "Title",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Organization",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "To",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "From",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "achievements": {
+        "count": 0,
+        "structure": [
+            {
+                "text": "Title",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Organization",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Link",
+                "minput": 1,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "To",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "From",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "certifications": {
+        "count": 0,
+        "structure": [
+            {
+                "text": "Title",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Issued Organization",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Issued Date",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "This credential does not expire",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "checkbox",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Expiration Date",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Creadential ID",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "month",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Creadential URL",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "url",
+                    "sugession": []
+                }
+            }
+        ]
+    },
+    "extras": {
+        "0": {
+            "Label": {
+                "id": "extras_0_0",
+                "value": "sdfgsdfgsdfgsdfg"
+            },
+            "Description": {
+                "count": 1,
+                "content": {
+                    "0": {
+                        "id": "extras_0_1_0",
+                        "value": "sdfgsdfgsdf gs dfg sd fgsd fgs df"
+                    }
+                }
+            }
+        },
+        "count": 1,
+        "structure": [
+            {
+                "text": "Label",
+                "minput": 0,
+                "tag": "input",
+                "tagdata": {
+                    "type": "text",
+                    "sugession": []
+                }
+            },
+            {
+                "text": "Description",
+                "minput": 1,
+                "tag": "textarea",
+                "tagdata": {
+                    "cols": 30,
+                    "rows": 5,
+                    "sugession": []
+                }
+            }
+        ]
+    }
+}
