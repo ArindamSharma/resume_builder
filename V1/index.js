@@ -131,18 +131,8 @@ function FormOpen(data){
     document.getElementsByClassName("modal")[0].classList.add("modal-show")
     document.body.setAttribute('scroll',"no")
     document.body.setAttribute('style',"overflow: hidden;")
-    // console.log("Form Opened with ",data)
-    // document.getElementsByClassName("modal")[0].classList.add("modal-show")
-    // document.body.setAttribute('scroll',"no")
-    // document.body.setAttribute('style',"overflow: hidden;")
-    // if(data.length==0){
-    //     for (const element of Object.keys(jsondata)) {
-    //         console.log(element)
-    //     }
-    // }
 }
 function FormClose(){
-    FormReset()
     document.getElementsByClassName("modal")[0].classList.remove("modal-show")
     document.body.removeAttribute('scroll',"no")
     document.body.removeAttribute('style',"overflow: hidden;")
@@ -159,14 +149,13 @@ function ModalSave(){
     a.setAttribute("download", 'userdata.json');
     a.click();
 }
-function FormReset(){
-    document.getElementsByClassName("modal-sections")[0].scrollTo(0,0);
-    
-}
+
 async function OpenFormWithFileUpload(element){
     
     await FileUploaded(element)
     console.log(jsondata)
+    // ljsondata={}
+    // return ljsondata={}
     
     FormOpen(jsondata)
 }
@@ -308,7 +297,6 @@ function AddEntry(element){
     removebutton.classList.add("minput-button")
     removebutton.textContent="X"
     removebutton.setAttribute("onclick","RemoveEntry(this)")
-    removebutton.setAttribute("type","button")
     removebutton.setAttribute(EXTRAPARAM,element.getAttribute(EXTRAPARAM)+"_"+currentcount)
     minputfield.appendChild(removebutton)
 
@@ -350,7 +338,6 @@ function createDivFieldEntryElement(data,fieldentrydata,uid){
         let addbutton=document.createElement("button")
         addbutton.classList.add("minput-button")
         addbutton.setAttribute("onclick","AddEntry(this)")
-        addbutton.setAttribute("type","button")
         addbutton.setAttribute(EXTRAPARAM,uid)
         addbutton.textContent="+ Add"
         minput.appendChild(addbutton)
@@ -388,7 +375,6 @@ function AddSubSection(element,name){
     let addbutton=document.createElement("button")
     addbutton.classList.add("add-subsection","theme-button-2")
     addbutton.setAttribute("onclick","AddSubSection(this,'"+name+"')")
-    addbutton.setAttribute("type","button")
     addbutton.textContent="+ Add"
 
     let modalsubsection=document.createElement("div")
@@ -398,7 +384,6 @@ function AddSubSection(element,name){
     let removebutton=document.createElement("button")
     removebutton.classList.add("remove-subsection","theme-button-2","remove-button")
     removebutton.setAttribute("onclick","RemoveSubSection(this,'"+name+"')")
-    removebutton.setAttribute("type","button")
     removebutton.innerHTML="Remove"
     modalsubsection.appendChild(removebutton,removebutton.classList,typeof(removebutton.classList))
     // add field
