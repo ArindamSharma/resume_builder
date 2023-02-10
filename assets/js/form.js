@@ -1,21 +1,22 @@
-function generateEntryField(structure,data={}){
-    console.log(structure,data);
+function generateEntryField(categoryname,structureindex,data={}){
+    console.log(formStencil[categoryname][STRUCTURE][structureindex],data);
+
     let field=document.createElement("div");
     field.classList.add("form-field");
 
     let title=document.createElement("label");
     title.classList.add("form-field-label");
-    title.textContent=structure.text;
+    title.textContent=formStencil[categoryname][STRUCTURE][structureindex].text;
 
     let entry=document.createElement("div");
     entry.classList.add("form-field-inputbox");
 
-    if(structure.minput==1){
+    if(formStencil[categoryname][STRUCTURE][structureindex].minput==1){
         for(let i=0;i<data[COUNT];i++){
             let fieldinput=document.createElement("div");
             fieldinput.classList.add("form-field-minputbox");
 
-            let inputelement=document.createElement(structure.tag);
+            let inputelement=document.createElement(formStencil[categoryname][STRUCTURE][structureindex].tag);
             inputelement.classList.add("form-field-input");
             inputelement.value=data["content"][i]["value"]==undefined?"":data["content"][i]["value"];
             
@@ -32,11 +33,13 @@ function generateEntryField(structure,data={}){
         let addentry=document.createElement("button");
         addentry.classList.add("form-addbutton","form-button");
         addentry.setAttribute("onclick","addInput(this)");
+        addentry.setAttribute("categoryname",categoryname);
+        addentry.setAttribute("structureindex",structureindex);
         addentry.textContent="+ADD";
         entry.appendChild(addentry);
     }
     else{
-        let inputelement=document.createElement(structure.tag);
+        let inputelement=document.createElement(formStencil[categoryname][STRUCTURE][structureindex].tag);
         inputelement.classList.add("form-field-input");
         inputelement.value=data["value"]==undefined?"":data["value"];
         entry.appendChild(inputelement);
@@ -57,9 +60,12 @@ function generateSection(categoryname,sectionindex,data={},addablesection=true){
     sectioncontent.classList.add("form-sectioncontent");
 
     // console.log(formStencil[categoryname][STRUCTURE]);
-    formStencil[categoryname][STRUCTURE].forEach(structelement => {
-        sectioncontent.appendChild(generateEntryField(structelement,data[structelement.text]))
-    });
+    for(let i=0;i<formStencil[categoryname][STRUCTURE].length;i++){
+        sectioncontent.appendChild(generateEntryField(categoryname,i,data[formStencil[categoryname][STRUCTURE][i].text]))
+    }
+    // formStencil[categoryname][STRUCTURE].forEach(structelement => {
+    //     sectioncontent.appendChild(generateEntryField(structelement,data[structelement.text]))
+    // });
 
     let titlecontainer=document.createElement("div");
     titlecontainer.classList.add("form-sectiontitlecontainer");
@@ -183,10 +189,29 @@ function removeSection(element){
     }
 }
 function addInput(element){
-    console.log(element);
+    // console.log(element.parentNode);
+    let categoryname=element.getAttribute("categoryname");
+    let structureindex=element.getAttribute("structureindex");
+    
+    let fieldinput=document.createElement("div");
+    fieldinput.classList.add("form-field-minputbox");
+
+    let inputelement=document.createElement(formStencil[categoryname][STRUCTURE][structureindex].tag);
+    inputelement.classList.add("form-field-input");
+    // inputelement.value=data["content"][i]["value"]==undefined?"":data["content"][i]["value"];
+
+    let removebutton=document.createElement("button");
+    removebutton.classList.add("form-removebutton","form-button");
+    removebutton.setAttribute("onclick","removeInput(this)");
+    removebutton.textContent="X";
+
+    fieldinput.appendChild(inputelement);
+    fieldinput.appendChild(removebutton);
+    element.parentNode.insertBefore(fieldinput,element);
 }
 function removeInput(element){
-    console.log(element);
+    // console.log(element.parentNode);
+    element.parentNode.remove();
 }
 function Testing(element){
     // element.appendChild(generateSection(EXPERIENCE,0,{}));

@@ -46,7 +46,9 @@
     padding: 10px;
     color: rgb(255, 255, 255);
 }
-
+.form-category> :last-child{
+    margin: 5px 0;
+}
 /* Section  */
 .form-section{
     width: 93%;
@@ -66,11 +68,11 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    padding: 5px;
 }
 .form-sectiontitle{
     text-transform: uppercase;
-    padding: 15px;
+    padding: 10px;
     color: white;
     font-family: 'Arial';
     font-weight: bold;
@@ -102,6 +104,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    margin-bottom: 10px;
+    background-color: lightgrey;
 }
 .form-field-input{
     text-decoration: none;
@@ -109,7 +113,7 @@
     font-size: 15px;
     outline: none;
     border: 0;
-    padding: 10px;
+    padding: 8px;
     /* border-radius: 10px; */
 }
 
@@ -120,11 +124,11 @@
     outline: none;
     border: 0;
     padding: 10px 20px;
-    margin: 5px;
 }
 .form-removebutton{
     color: black;
-    align-self: flex-end;
+    margin: unset;
+    padding: 10px;
 }
 .form-removebutton:hover{
     background-color: rgb(255, 115, 115);
