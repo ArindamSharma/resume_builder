@@ -12,7 +12,7 @@ const COUNT="count"
 const LABEL="label"
 const CONTENT="content"
 const EXTRAINFO="extrainfo"
-const ORDER=[EXPERIENCE,PROJECT,SKILL,CERTIFICATE,ACHIEVEMENT,POR,EXTRA]
+const ORDER=[EDUCATION,EXPERIENCE,PROJECT,SKILL,CERTIFICATE,ACHIEVEMENT,POR,EXTRA]
 
 function struct(text,tag,tagdata,minput=0,extra={}){
     return {

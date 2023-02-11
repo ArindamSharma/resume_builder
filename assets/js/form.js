@@ -17,9 +17,10 @@ function generateInput(categoryname,sectionindex,structureindex,value="",mindex=
     for (let key in struct.attributes) {
         inputelement.setAttribute(key,struct.attributes[key]);
     }
-    // if(struct.extra["sugession"]!=undefined && struct.extra["sugession"].length!=0){
+    if(struct.extra["sugession"]!=undefined && struct.extra["sugession"].length!=0){
+        inputelement.setAttribute("list",categoryname+"_"+structureindex+"_datalist");
+    }
 
-    // }
     inputelement.classList.add("form-field-input");
     inputelement.value=value;
     inputelement.setAttribute("categoryname",categoryname);
@@ -93,9 +94,6 @@ function generateSection(categoryname,sectionindex,data={},addablesection=true){
     for(let i=0;i<formStencil[categoryname][STRUCTURE].length;i++){
         sectioncontent.appendChild(generateEntryField(categoryname,sectionindex,i,data[formStencil[categoryname][STRUCTURE][i].text]))
     }
-    // formStencil[categoryname][STRUCTURE].forEach(structelement => {
-    //     sectioncontent.appendChild(generateEntryField(structelement,data[structelement.text]))
-    // });
 
     let titlecontainer=document.createElement("div");
     titlecontainer.classList.add("form-sectiontitlecontainer");
@@ -136,6 +134,20 @@ function generateCategory(categoryname,data={},addablesection=true){
     // categortitle.textContent=categoryname+"asdasd";
     category.appendChild(categortitle);
 
+    // common data list for inputs for this category
+    for(let i=0;i<formStencil[categoryname][STRUCTURE].length;i++){
+        if(formStencil[categoryname][STRUCTURE][i].extra["sugession"]!=undefined && formStencil[categoryname][STRUCTURE][i].extra["sugession"].length!=0){
+            let datalist=document.createElement("datalist");
+            datalist.id=categoryname+"_"+i+"_datalist";
+            formStencil[categoryname][STRUCTURE][i].extra["sugession"].forEach(sugession => {
+                let option=document.createElement("option");
+                option.value=sugession;
+                datalist.appendChild(option);
+            });
+            category.appendChild(datalist);
+        }
+    }; 
+    
     // console.log(data);
     if(data[COUNT]==0 || data[COUNT]==undefined){
         flogger("PreFilled Data : Empty");
