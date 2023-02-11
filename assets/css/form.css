@@ -99,6 +99,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-end;
+    justify-content: center;
 }
 .form-field-minputbox{
     display: flex;
@@ -108,7 +109,7 @@
     background-color: lightgrey;
 }
 .form-field-input{
-    text-decoration: none;
+    /* text-decoration: none; */
     font-family: 'Arial';
     font-size: 15px;
     outline: none;
