@@ -64,8 +64,6 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
     let field=document.createElement("div");
     field.classList.add("form-field");
 
-    // userData[categoryname][sectionindex].push();
-
     let title=document.createElement("label");
     title.classList.add("form-field-label");
     title.textContent=formStencil[categoryname][STRUCTURE][structureindex].text;
@@ -109,7 +107,7 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
 function generateSection(categoryname,sectionindex,data={},addablesection=true){
     flogger("Generating Section :",sectionindex);
     
-    userData[categoryname][sectionindex]=[];
+    userData[categoryname][sectionindex]={};
     
     let section=document.createElement("div");
     section.classList.add("form-section");
@@ -353,7 +351,28 @@ function closeForm(){
     document.getElementById("form").removeChild(document.getElementById("form").firstElementChild);
     raiseFrame("main");
 }
+function extractUserInputsFromForm(data){
+    if(typeof(data)!='object' || data==null){
+        return;
+    }
+    if('id' in data){
+        data['value']=document.getElementById(data['id']).value;
+        // flogger(data['value']);
+    }
+    else{
+        for(let x in data){
+            extractUserInputsFromForm(data[x]);
+        }
+    }
+}
 function saveForm(element){
     flogger("Saving Form");
-    flogger(userData);
+    extractUserInputsFromForm(userData);
+    flogger("Generating File userData.json");
+    
+    //create a download from jsondata
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(userData)], {type:"text/json;charset=utf-8"}));
+    a.setAttribute("download", 'userData.json');
+    a.click();
 }
