@@ -1,4 +1,4 @@
-formdata={}
+userData={}
 function flogger(){
     console.log("[Info]",...arguments)
 }
@@ -8,6 +8,14 @@ function generateUID(categoryname,sectionindex,structureindex,mindex=undefined){
 function generateInput(categoryname,sectionindex,structureindex,value="",mindex=undefined){
     let struct=formStencil[categoryname][STRUCTURE][structureindex];
     let uid=generateUID(categoryname,sectionindex,structureindex,mindex);
+
+    if(struct.minput==1){
+        userData[categoryname][sectionindex][structureindex]["content"][mindex]={"id":uid,"value":null};
+        userData[categoryname][sectionindex][structureindex]["count"]+=1;
+    }
+    else{
+        userData[categoryname][sectionindex][structureindex]={"id":uid,"value":null};
+    }
     flogger("Generating Input :",{
         "value":value,
         STRUCTURE:struct,
@@ -23,12 +31,31 @@ function generateInput(categoryname,sectionindex,structureindex,value="",mindex=
 
     inputelement.classList.add("form-field-input");
     inputelement.value=value;
-    inputelement.setAttribute("categoryname",categoryname);
-    inputelement.setAttribute("structureindex",structureindex);
-    inputelement.setAttribute("sectionindex",sectionindex);
+    // inputelement.setAttribute("categoryname",categoryname);
+    // inputelement.setAttribute("structureindex",structureindex);
+    // inputelement.setAttribute("sectionindex",sectionindex);
     inputelement.id=uid;
 
     return inputelement;
+}
+function generateMInput(categoryname,sectionindex,structureindex,value="",mindex=undefined){
+    let fieldinput=document.createElement("div");
+    fieldinput.classList.add("form-field-minputbox");
+
+    let inputelement=generateInput(categoryname,sectionindex,structureindex,value,mindex);
+    
+    let removebutton=document.createElement("button");
+    removebutton.classList.add("form-removebutton","form-button");
+    removebutton.setAttribute("onclick","removeInput(this)");
+    removebutton.setAttribute("categoryname",categoryname);
+    removebutton.setAttribute("sectionindex",sectionindex);
+    removebutton.setAttribute("structureindex",structureindex);
+    removebutton.setAttribute("mindex",mindex);
+    removebutton.textContent="X";
+
+    fieldinput.appendChild(inputelement);
+    fieldinput.appendChild(removebutton);
+    return fieldinput;
 }
 function generateEntryField(categoryname,sectionindex,structureindex,data={}){
     flogger("Generating EntryField :",formStencil[categoryname][STRUCTURE][structureindex].text);
@@ -37,28 +64,27 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
     let field=document.createElement("div");
     field.classList.add("form-field");
 
+    // userData[categoryname][sectionindex].push();
+
     let title=document.createElement("label");
     title.classList.add("form-field-label");
     title.textContent=formStencil[categoryname][STRUCTURE][structureindex].text;
 
     let entry=document.createElement("div");
     entry.classList.add("form-field-inputbox");
+    entry.setAttribute("inputboxcount",0);
 
     if(formStencil[categoryname][STRUCTURE][structureindex].minput==1){
+        
+        userData[categoryname][sectionindex][structureindex]={"count":0,"content":{}};
+
         for(let i=0;i<data[COUNT];i++){
-            let fieldinput=document.createElement("div");
-            fieldinput.classList.add("form-field-minputbox");
-
-            let inputelement=generateInput(categoryname,sectionindex,structureindex,data["content"][i]["value"]==undefined?"":data["content"][i]["value"]);
-            
-            let removebutton=document.createElement("button");
-            removebutton.classList.add("form-removebutton","form-button");
-            removebutton.setAttribute("onclick","removeInput(this)");
-            removebutton.textContent="X";
-
-            fieldinput.appendChild(inputelement);
-            fieldinput.appendChild(removebutton);
+            let fieldinput=generateMInput(categoryname,sectionindex,structureindex,
+                data["content"][i]["value"]==undefined?"":data["content"][i]["value"],
+                parseInt(entry.getAttribute("inputboxcount"))
+            );
             entry.appendChild(fieldinput);
+            entry.setAttribute("inputboxcount",parseInt(entry.getAttribute("inputboxcount"))+1);
         }
 
         let addentry=document.createElement("button");
@@ -82,6 +108,9 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
 }
 function generateSection(categoryname,sectionindex,data={},addablesection=true){
     flogger("Generating Section :",sectionindex);
+    
+    userData[categoryname][sectionindex]=[];
+    
     let section=document.createElement("div");
     section.classList.add("form-section");
     section.setAttribute("category",categoryname);
@@ -95,29 +124,31 @@ function generateSection(categoryname,sectionindex,data={},addablesection=true){
         sectioncontent.appendChild(generateEntryField(categoryname,sectionindex,i,data[formStencil[categoryname][STRUCTURE][i].text]))
     }
 
-    let titlecontainer=document.createElement("div");
-    titlecontainer.classList.add("form-sectiontitlecontainer");
-    
-    let removesectionbutton=document.createElement("button");
-    removesectionbutton.setAttribute("onclick","removeSection(this)");
-    removesectionbutton.classList.add("form-button","form-removebutton");
-    removesectionbutton.textContent="Delete";
-    // removesectionbutton.classList.add("form-button","form-button-icon");
-    // let removesectionbuttonimg=document.createElement("img");
-    // removesectionbuttonimg.classList.add("form-delete-icon");
-    // removesectionbuttonimg.src="../assets/img/delete-white.png";
-    // removesectionbuttonimg.alt="Delete";
-    // removesectionbuttonimg.title="Delete";
-    // removesectionbutton.appendChild(removesectionbuttonimg);
-    
-    let sectiontitle=document.createElement("label");
-    sectiontitle.classList.add("form-sectiontitle");
-    sectiontitle.textContent=categoryname+" "+(sectionindex+1);
-    
-    titlecontainer.appendChild(sectiontitle);
-    titlecontainer.appendChild(removesectionbutton);
-
     if(addablesection){
+        let titlecontainer=document.createElement("div");
+        titlecontainer.classList.add("form-sectiontitlecontainer");
+        
+        let removesectionbutton=document.createElement("button");
+        removesectionbutton.setAttribute("onclick","removeSection(this)");
+        removesectionbutton.setAttribute("categoryname",categoryname);
+        removesectionbutton.setAttribute("sectionindex",sectionindex);
+        removesectionbutton.classList.add("form-button","form-removebutton");
+        removesectionbutton.textContent="Delete";
+        // removesectionbutton.classList.add("form-button","form-button-icon");
+        // let removesectionbuttonimg=document.createElement("img");
+        // removesectionbuttonimg.classList.add("form-delete-icon");
+        // removesectionbuttonimg.src="../assets/img/delete-white.png";
+        // removesectionbuttonimg.alt="Delete";
+        // removesectionbuttonimg.title="Delete";
+        // removesectionbutton.appendChild(removesectionbuttonimg);
+        
+        let sectiontitle=document.createElement("label");
+        sectiontitle.classList.add("form-sectiontitle");
+        sectiontitle.textContent=categoryname+" "+(sectionindex+1);
+        
+        titlecontainer.appendChild(sectiontitle);
+        titlecontainer.appendChild(removesectionbutton);
+
         section.appendChild(titlecontainer);
     }
     section.appendChild(sectioncontent);
@@ -125,8 +156,12 @@ function generateSection(categoryname,sectionindex,data={},addablesection=true){
 }
 function generateCategory(categoryname,data={},addablesection=true){
     flogger("Generating Category :",categoryname);
+    
+    userData[categoryname]={};
+    
     let category=document.createElement("div");
     category.classList.add("form-category");
+    category.setAttribute("sectioncount",0);
 
     let categortitle=document.createElement("label");
     categortitle.classList.add("form-categorylabel");
@@ -147,7 +182,7 @@ function generateCategory(categoryname,data={},addablesection=true){
             category.appendChild(datalist);
         }
     }; 
-    
+
     // console.log(data);
     if(data[COUNT]==0 || data[COUNT]==undefined){
         flogger("PreFilled Data : Empty");
@@ -207,67 +242,69 @@ function generateForm(element,data={}){
 
     let save=document.createElement("button");
     save.classList.add("form-button","form-savebutton");
+    save.setAttribute("onclick","saveForm(this)");
     save.textContent="Generate Form Data";
     element.appendChild(save);
 }
 function addSection(element,categoryname){
     flogger("Button Pressed : AddSection");
-    // let tmpelement=element;
-    // console.log(element.parentNode);
-    let newindex=element.parentNode.getElementsByClassName("form-section").length;
-    // console.log(newindex);
+    
+    let newindex=parseInt(element.parentNode.getAttribute("sectioncount"));
+    element.parentNode.setAttribute("sectioncount",newindex+1);
+
     element.parentNode.insertBefore(generateSection(categoryname,newindex),element);
+
+    //reset the title count
+    let sections=element.parentNode.getElementsByClassName("form-section");
+    for(let i=0;i<sections.length;i++){
+        sections[i].firstChild.firstChild.textContent=sections[i].getAttribute("category")+" "+(i+1);
+    }
 }
 function removeSection(element){
     flogger("Button Pressed : RemoveSection");
-    // console.log(element);
+    
+    let categoryname=element.getAttribute("categoryname");
     let parent=element.parentNode.parentNode.parentNode;
+    
+    // removing user data
+    delete userData[categoryname][element.getAttribute("sectionindex")];
+    
     // removing node
     element.parentNode.parentNode.remove();
+    
     // reseting labels
     let sections=parent.getElementsByClassName("form-section");
-    // console.log(sections);
     for(let i=0;i<sections.length;i++){
-        sections[i].setAttribute("sectionindex",i);
         sections[i].firstChild.firstChild.textContent=sections[i].getAttribute("category")+" "+(i+1);
     }
 }
 function addInput(element){
     flogger("Button Pressed : AddInput");
-    // console.log(element.parentNode);
+    
     let categoryname=element.getAttribute("categoryname");
     let structureindex=element.getAttribute("structureindex");
     let sectionindex=element.getAttribute("sectionindex");
-    let mindex=element.parentNode.children.length-1;
+    let mindex=parseInt(element.parentNode.getAttribute("inputboxcount"));
     
-    let fieldinput=document.createElement("div");
-    fieldinput.classList.add("form-field-minputbox");
+    let fieldinput=generateMInput(categoryname,sectionindex,structureindex,"",mindex);
 
-    let inputelement=generateInput(categoryname,sectionindex,structureindex,"",mindex);
-
-    let removebutton=document.createElement("button");
-    removebutton.classList.add("form-removebutton","form-button");
-    removebutton.setAttribute("onclick","removeInput(this)");
-    removebutton.textContent="X";
-
-    fieldinput.appendChild(inputelement);
-    fieldinput.appendChild(removebutton);
+    element.parentNode.setAttribute("inputboxcount",mindex+1);
     element.parentNode.insertBefore(fieldinput,element);
 }
 function removeInput(element){
     flogger("Button Pressed : RemoveInput");
-    let parent=element.parentNode.parentNode;
-    // console.log(element.parentNode); 
+    let categoryname=element.getAttribute("categoryname");
+    let sectionindex=element.getAttribute("sectionindex");
+    let structureindex=element.getAttribute("structureindex");
+    let mindex=element.getAttribute("mindex");
+    
+    //removing userdata 
+    delete userData[categoryname][sectionindex][structureindex]["content"][mindex];
+    userData[categoryname][sectionindex][structureindex]["count"]--;
+    
+    //removing element
     element.parentNode.remove();
-    // flogger(parent);
-    let minputs=parent.getElementsByClassName("form-field-minputbox");
-    // flogger(minputs);
-    for(let i=0;i<minputs.length;i++){
-        let categoryname=minputs[i].firstChild.getAttribute("categoryname");
-        let sectionindex=minputs[i].firstChild.getAttribute("sectionindex");
-        let structureindex=minputs[i].firstChild.getAttribute("structureindex");
-        minputs[i].firstChild.id=generateUID(categoryname,sectionindex,structureindex,i);
-    }
+
 }
 function Testing(element){
     // element.appendChild(generateSection(EXPERIENCE,0,{}));
@@ -315,4 +352,8 @@ function closeForm(){
     console.log(document.getElementById("form").firstChild);
     document.getElementById("form").removeChild(document.getElementById("form").firstElementChild);
     raiseFrame("main");
+}
+function saveForm(element){
+    flogger("Saving Form");
+    flogger(userData);
 }
