@@ -119,8 +119,9 @@ function generateSection(categoryname,sectionindex,data={},addablesection=true){
     sectioncontent.classList.add("form-sectioncontent");
 
     // console.log(formStencil[categoryname][STRUCTURE]);
+    console.log(data);
     for(let i=0;i<formStencil[categoryname][STRUCTURE].length;i++){
-        sectioncontent.appendChild(generateEntryField(categoryname,sectionindex,i,data[formStencil[categoryname][STRUCTURE][i].text]))
+        sectioncontent.appendChild(generateEntryField(categoryname,sectionindex,i,data[formStencil[categoryname][STRUCTURE][i].text]));
     }
 
     if(addablesection){
@@ -182,11 +183,11 @@ function generateCategory(categoryname,data={},addablesection=true){
         }
     }; 
 
-    console.log(data);
+    // console.log(data);
     let c=0;
     let flag=0;
     for(let key in data){
-        console.log("here",key,data[key]);
+        // console.log("here",key,data[key]);
         category.appendChild(generateSection(categoryname,c,data[key]));
         c++;
         flag=1;
