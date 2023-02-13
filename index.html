@@ -30,12 +30,12 @@
                 <a class="main-theme-button-1" onclick="openForm()">Enter Resume Details</a>
                 <label class="main-step-heading">OR</label>
                 <label class="main-step-subheading">Edit Generate Resume Data File</label>
-                <input class="main-theme-button-1" type="file" name="" id="" oninput="OpenFormWithFileUpload(this)">
+                <input class="main-theme-button-1" type="file" name="" id="" onclick="resetInput(this)" onchange="FileUploaded(this,true)">
             </div>
             <div class="main-step">
                 <label class="main-step-heading">Step : 2</label>
                 <label class="main-step-subheading">Upload Generate Resume Data File from First Step</label>
-                <input class="main-theme-button-1" type="file" name="" id="" onchange="FileUploaded(this)">
+                <input class="main-theme-button-1" type="file" name="" id="" onclick="resetInput(this)" onchange="FileUploaded(this)">
                 <label class="main-step-subheading">(Reads the form data from the uploaded file)</label>
             </div>
             <div class="main-step">

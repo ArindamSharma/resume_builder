@@ -11,6 +11,8 @@ const STRUCTURE="structure"
 const COUNT="count"
 const LABEL="label"
 const CONTENT="content"
+const VALUE="value"
+const ID="id"
 const EXTRAINFO="extrainfo"
 const ORDER=[EDUCATION,EXPERIENCE,PROJECT,SKILL,CERTIFICATE,ACHIEVEMENT,POR,EXTRA]
 
