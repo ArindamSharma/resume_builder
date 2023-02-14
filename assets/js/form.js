@@ -45,6 +45,7 @@ function generateMInput(categoryname,sectionindex,structureindex,value="",mindex
     let fieldinput=document.createElement("div");
     fieldinput.classList.add("form-field-minputbox");
 
+    console.log("here",userData[categoryname][sectionindex][structureindex]);
     let inputelement=generateInput(categoryname,sectionindex,structureindex,value,mindex);
     
     let removebutton=document.createElement("button");
