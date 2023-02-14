@@ -17,11 +17,11 @@ function generateInput(categoryname,sectionindex,structureindex,value="",mindex=
     });
 
     if(struct.minput==1){
-        userData[categoryname][sectionindex][structureindex][CONTENT][mindex]={"id":uid,"value":null};
+        userData[categoryname][sectionindex][structureindex][CONTENT][mindex]={"id":uid,"value":value};
         userData[categoryname][sectionindex][structureindex][COUNT]+=1;
     }
     else{
-        userData[categoryname][sectionindex][structureindex]={"id":uid,"value":null};
+        userData[categoryname][sectionindex][structureindex]={"id":uid,"value":value};
     }
 
     let inputelement=document.createElement(struct.tag);
