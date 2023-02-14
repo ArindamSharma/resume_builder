@@ -77,7 +77,7 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
 
     if(formStencil[categoryname][STRUCTURE][structureindex].minput==1){
         
-        userData[categoryname][sectionindex][structureindex]={COUNT:0,"content":{}};
+        userData[categoryname][sectionindex][structureindex]={"count":0,"content":{}};
 
         for(let i=0;i<data[COUNT];i++){
             let fieldinput=generateMInput(categoryname,sectionindex,structureindex,
