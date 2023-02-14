@@ -50,6 +50,7 @@ function FileUploaded(element,openform=false){
     reader.onloadend=function(){
         if(openform){
             openForm(JSON.parse(reader.result));
+            resetInput(element);
         }
         else{
             userData=JSON.parse(reader.result);

@@ -10,18 +10,20 @@ function generateInput(categoryname,sectionindex,structureindex,value="",mindex=
     let struct=formStencil[categoryname][STRUCTURE][structureindex];
     let uid=categoryname+"_"+sectionindex+"_"+structureindex+(struct.minput==1?("_"+mindex):"");
 
+    flogger("Generating Input :",{
+        "value":value,
+        STRUCTURE:struct,
+        "id":uid,
+    });
+
     if(struct.minput==1){
-        userData[categoryname][sectionindex][structureindex][CONTENT][mindex]={ID:uid,VALUE:null};
+        userData[categoryname][sectionindex][structureindex][CONTENT][mindex]={"id":uid,"value":value};
         userData[categoryname][sectionindex][structureindex][COUNT]+=1;
     }
     else{
-        userData[categoryname][sectionindex][structureindex]={ID:uid,VALUE:null};
+        userData[categoryname][sectionindex][structureindex]={"id":uid,"value":value};
     }
-    flogger("Generating Input :",{
-        VALUE:value,
-        STRUCTURE:struct,
-        ID:uid
-    });
+
     let inputelement=document.createElement(struct.tag);
     for (let key in struct.attributes) {
         inputelement.setAttribute(key,struct.attributes[key]);
@@ -75,11 +77,11 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
 
     if(formStencil[categoryname][STRUCTURE][structureindex].minput==1){
         
-        userData[categoryname][sectionindex][structureindex]={COUNT:0,CONTENT:{}};
+        userData[categoryname][sectionindex][structureindex]={"count":0,"content":{}};
 
         for(let i=0;i<data[COUNT];i++){
             let fieldinput=generateMInput(categoryname,sectionindex,structureindex,
-                data[CONTENT][i][VALUE]==undefined?"":data[CONTENT][i][VALUE],
+                data[CONTENT][i]["value"]==undefined?"":data[CONTENT][i]["value"],
                 parseInt(entry.getAttribute("inputboxcount"))
             );
             entry.appendChild(fieldinput);
@@ -96,7 +98,7 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
         entry.appendChild(addentry);
     }
     else{
-        let inputelement=generateInput(categoryname,sectionindex,structureindex,data[VALUE]==undefined?"":data[VALUE]);
+        let inputelement=generateInput(categoryname,sectionindex,structureindex,data["value"]==undefined?"":data["value"]);
         entry.appendChild(inputelement);
     }
 
@@ -118,10 +120,8 @@ function generateSection(categoryname,sectionindex,data={},addablesection=true){
     let sectioncontent=document.createElement("div");
     sectioncontent.classList.add("form-sectioncontent");
 
-    // console.log(formStencil[categoryname][STRUCTURE]);
-    console.log(data);
     for(let i=0;i<formStencil[categoryname][STRUCTURE].length;i++){
-        sectioncontent.appendChild(generateEntryField(categoryname,sectionindex,i,data[formStencil[categoryname][STRUCTURE][i].text]));
+        sectioncontent.appendChild(generateEntryField(categoryname,sectionindex,i,data[i]));
     }
 
     if(addablesection){
@@ -322,9 +322,9 @@ function extractUserInputsFromForm(data){
     if(typeof(data)!='object' || data==null){
         return;
     }
-    if('id' in data){
-        data[VALUE]=document.getElementById(data[ID]).value;
-        // flogger(data[VALUE]);
+    if("id" in data){
+        data["value"]=document.getElementById(data["id"]).value;
+        // flogger(data["value"]);
     }
     else{
         for(let x in data){
