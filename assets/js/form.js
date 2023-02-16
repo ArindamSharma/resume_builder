@@ -12,8 +12,8 @@ function generateInput(categoryname,sectionindex,structureindex,value="",mindex=
 
     flogger("Generating Input :",{
         "value":value,
-        STRUCTURE:struct,
-        "id":uid,
+        "structure":struct,
+        "id":uid
     });
 
     if(struct.minput==1){
@@ -23,6 +23,7 @@ function generateInput(categoryname,sectionindex,structureindex,value="",mindex=
     else{
         userData[categoryname][sectionindex][structureindex]={"id":uid,"value":value};
     }
+
 
     let inputelement=document.createElement(struct.tag);
     for (let key in struct.attributes) {
@@ -45,6 +46,7 @@ function generateMInput(categoryname,sectionindex,structureindex,value="",mindex
     let fieldinput=document.createElement("div");
     fieldinput.classList.add("form-field-minputbox");
 
+    // console.log("here",userData[categoryname][sectionindex][structureindex]);
     let inputelement=generateInput(categoryname,sectionindex,structureindex,value,mindex);
     
     let removebutton=document.createElement("button");
@@ -81,6 +83,7 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
 
         for(let i=0;i<data[COUNT];i++){
             let fieldinput=generateMInput(categoryname,sectionindex,structureindex,
+                data[CONTENT][i]["value"]==undefined?"":data[CONTENT][i]["value"],
                 data[CONTENT][i]["value"]==undefined?"":data[CONTENT][i]["value"],
                 parseInt(entry.getAttribute("inputboxcount"))
             );
@@ -133,6 +136,7 @@ function generateSection(categoryname,sectionindex,data={},addablesection=true){
         removesectionbutton.setAttribute("categoryname",categoryname);
         removesectionbutton.setAttribute("sectionindex",sectionindex);
         removesectionbutton.classList.add("form-button","form-removebutton");
+        removesectionbutton.style.marginRight="10px";
         removesectionbutton.textContent="Delete";
         // removesectionbutton.classList.add("form-button","form-button-icon");
         // let removesectionbuttonimg=document.createElement("img");
@@ -302,7 +306,6 @@ function removeInput(element){
     
     //removing element
     element.parentNode.remove();
-
 }
 
 // Main Function Calls

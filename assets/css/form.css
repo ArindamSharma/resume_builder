@@ -3,10 +3,12 @@
     flex-direction: column;
     align-items: center;
     background-color: rgba(141, 141, 141, 0.932);
-    width: 600px;
+    width: 90vw;
+    max-width: 600px;
+    min-width: 250px;
     height: 80%;
     border-radius: 10px;
-    padding: 15px;
+    padding: 1.5vw;
 }
 /* Form */  
 .form-heading{
@@ -40,6 +42,7 @@
 }
 .form-categorylabel{
     text-transform: uppercase;
+    text-align: center;
     font-weight: bold;
     font-size: 25px;
     font-family: 'Righteous';
@@ -51,9 +54,9 @@
 }
 /* Section  */
 .form-section{
-    width: 93%;
+    width: 100%;
     background-color: rgba(65, 65, 65, 0.185);
-    padding: 10px;
+    padding: 10px 0;
     margin: 5px 0;
     display: flex;
     flex-direction: column;
@@ -80,13 +83,11 @@
 }
 /* Entry Field  */
 .form-field{
-    /* width: 80%; */
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
     padding: 5px;
-    /* padding: 10px; */
 }
 .form-field-label{
     color: white;
@@ -100,6 +101,7 @@
     flex-wrap: nowrap;
     align-items: flex-end;
     justify-content: center;
+    padding-right: 10px;
 }
 .form-field-minputbox{
     display: flex;
@@ -150,6 +152,7 @@
     border-radius: 50%;
     align-self: flex-end;
     padding: 10px 12.5px;
+    margin: 5px;
 }
 /* Form icons */
 .form-button-icon{
