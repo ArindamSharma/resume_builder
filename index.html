@@ -5,17 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./assets/img/5234318.png">
-    <title>Document</title>
+    <title>Resume Builder</title>
     <script src="./assets/js/const.js"></script>
-    
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <script src="./assets/js/index.js"></script>
 
     <link rel="stylesheet" href="./assets/css/main.css">
     <script src="./assets/js/main.js"></script>
 
     <link rel="stylesheet" href="./assets/css/form.css">
     <script src="./assets/js/form.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <script src="./assets/js/index.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/template.css">
+    <script src="./assets/js/template.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/template1.css">
+    <script src="./assets/js/template1.js"></script>
     
 </head>
 <body onload="OnLoad()">
@@ -43,8 +49,8 @@
                 <label class="main-step-heading">Step : 3</label>
                 <label class="main-step-subheading">Select Below Resume Templates Of Your Choice</label>
                 <div class="main-template-button-frame">
-                    <a class="main-theme-button-1" onclick="raiseFrame('template1')">Template-1</a>
-                    <a class="main-theme-button-1" onclick="raiseFrame('template2')">Template-2</a>
+                    <a class="main-theme-button-1" onclick="openTemplate('template1')">Template-1</a>
+                    <a class="main-theme-button-1" onclick="openTemplate('template2')">Template-2</a>
                 </div>
                 <label class="main-step-subheading">Please make sure to Print the page in A4 page size<br>(Build a cover Letter as Well)</label>
             </div>
@@ -54,7 +60,5 @@
     </div>
     <div class="frame" id="template1"></div>
     <div class="frame" id="template2"></div>
-    <div class="frame" id="template3"></div>
-    <!-- <script src="./script.js"></script> -->
 </body>
 </html>

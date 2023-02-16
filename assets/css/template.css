@@ -1,0 +1,38 @@
+:root {
+    /* for 300dpi */
+    /* --pagewidth: 2480px; */
+
+    /* for 300dpi */
+    --pagewidth: 1920px;
+
+    /* for 300dpi */
+    /* --pagewidth: 1080px; */
+  }
+.template{
+    width: 100%;
+    height: 100%;
+    /* background-color: white; */
+}
+.closetemplate{
+    position: absolute;
+    padding: 10px 15px;
+    right: 0;
+    margin: 10px;
+    border: 0;
+    border-radius: 10px;
+    background-color: rgba(159, 159, 159, 0.188);
+    color: white;
+}
+.closetemplate:hover{
+    background-color: rgba(165, 165, 165, 0.955);
+}
+.closetemplate:active{
+    background-color: rgb(88, 88, 88);
+}
+.templatebody{
+    position: absolute;
+    width: 100%;
+    /* left:15%; */
+    height: 100%;
+    /* overflow-y: scroll; */
+}

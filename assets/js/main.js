@@ -1,12 +1,12 @@
 function mlogger(){
     console.log("[main.js]",...arguments);
 }
-async function OpenFormWithFileUpload(element){
+// async function OpenFormWithFileUpload(element){
     
-    // let p= await FileUploaded(element);
-    // mlogger("here",p);
+//     let p= await FileUploaded(element);
+//     mlogger("here",p);
     
-}
+// }
 // function updateJsonDataFromParsedJsonData(data){
 //     mlogger(data);
 //     jsondata=data// future modification needed
