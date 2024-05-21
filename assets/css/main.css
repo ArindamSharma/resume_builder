@@ -76,14 +76,15 @@
     text-decoration: dashed;
 }
 .main-theme-button-1{
-    background-color: grey;
+    background-color: transparent;
     padding: 15px 20px;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 50px;
     color: rgb(255, 255, 255);
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
+    border: solid white 4px;
 }
 .main-theme-button-1:hover{
     color: rgb(66, 66, 66);
@@ -108,4 +109,7 @@
     .main-step{
         width: 80vw;
     }
+    .main-theme-button-1{
+        border: solid white 3px;
+    }   
 }

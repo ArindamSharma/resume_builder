@@ -15,15 +15,22 @@ body{
     overflow: hidden;
 }
 .frame{
-    width: 100vw;
-    height: 100vh;
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
     position: absolute;
-    margin: 0;
+    margin: 15px;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.151);
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: overlay;
     top: 0;
+}
+@media screen and (width<600px) {
+    .frame{    
+        width: calc(100vw);
+        height: calc(100vh);
+        margin: 0px;
+    }
 }
