@@ -19,6 +19,7 @@
     height: 80%;
     border-radius: 10px;
     padding: 1.5vw;
+    box-shadow: 0 0 0.5vw var(--color);
 }
 /* Form */  
 .form-heading{
@@ -97,7 +98,7 @@
 .form-field{
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 5px;
 }

@@ -26,6 +26,10 @@ function generateInput(categoryname,sectionindex,structureindex,value="",mindex=
 
 
     let inputelement=document.createElement(struct.tag);
+    // console.log("me",struct.attributes.type,struct.attributes.type=="checkbox");
+    if(struct.attributes.type=="checkbox"){
+        inputelement.setAttribute("onclick","formCheckbox(this)");
+    }
     for (let key in struct.attributes) {
         inputelement.setAttribute(key,struct.attributes[key]);
     }
@@ -309,14 +313,6 @@ function removeInput(element){
     //removing element
     element.parentNode.remove();
 }
-
-// Main Function Calls
-function openForm(data={}){
-    flogger("Opening Form")
-    flogger("Data :",data);
-    raiseFrame("form");
-    document.getElementById("form").appendChild(generateForm(data));
-}
 function closeForm(){
     flogger("Closing Form")
     console.log(document.getElementById("form").firstChild);
@@ -347,4 +343,17 @@ function saveForm(element){
     a.href = URL.createObjectURL(new Blob([JSON.stringify(userData)], {type:"text/json;charset=utf-8"}));
     a.setAttribute("download", 'userData.json');
     a.click();
+}
+function formCheckbox(element){
+    // let x=document.getElementById(element.id.slice(0,element.id.lastIndexOf("_"))+"_"+element.getAttribute("target_index"))
+    // console.log("checked box clicked",element,element.checked,x,x.disabled);
+    document.getElementById(element.id.slice(0,element.id.lastIndexOf("_"))+"_"+element.getAttribute("target_index")).disabled=element.checked;
+}
+
+// Main Function Calls
+function openForm(data={}){
+    flogger("Opening Form")
+    flogger("Data :",data);
+    raiseFrame("form");
+    document.getElementById("form").appendChild(generateForm(data));
 }
