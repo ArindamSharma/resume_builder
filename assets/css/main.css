@@ -1,3 +1,13 @@
+:root{
+    --saveColor: rgb(54, 255, 81);
+    --removeColor: rgb(255, 94, 94);
+    --addColor: rgb(94, 156, 255);
+    --color:rgb(255, 255, 255);
+    --bgcolor1:rgba(9, 9, 9, 0.85);
+    --bgcolor2:rgba(65, 65, 65, 0.185);
+    --inputbgcolor:rgb(45, 45, 45);
+    --inputcolor:rgb(255, 255, 255);
+}
 #main{
     flex-direction: column;
     justify-content: unset;
@@ -11,14 +21,14 @@
 .main-heading{
     text-align: center;
     font-family: 'Righteous';
-    color: white;
+    color: var(--color);
     font-size: 60px;
     padding: 0 10px;
 }
 .main-subheading{
     text-align: center;
     font-family: 'Righteous';
-    color: white;
+    color: var(--color);
     font-size: 30px;
     padding: 10px;
 }
@@ -44,21 +54,18 @@
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
-    background-color: rgba(124, 124, 124, 0.349);
+    background-color: var(--bgcolor1);
 }
 .main-step-heading{
     text-align: center;
     font-family: 'Righteous';
-    color: white;
+    color: var(--color);
     font-size: 40px;
-    /* background-color: black; */
-    /* width: 100%; */
-    /* border-radius: 5px 5px 0 0; */
 }
 .main-step-subheading{
     text-align: center;
     font-family:  'Arial Narrow';
-    color: rgb(204, 204, 204);
+    color: var(--color);
     font-size: 20px;
     padding: 5px 0;
 }
@@ -72,7 +79,7 @@
 
 .main-footer{
     font-size: 20px;
-    color: rgba(124, 101, 255, 0.555);
+    color: var(--saveColor);
     text-decoration: dashed;
 }
 .main-theme-button-1{
@@ -80,15 +87,15 @@
     padding: 15px 20px;
     margin: 10px;
     border-radius: 50px;
-    color: rgb(255, 255, 255);
+    color: var(--addColor);
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-    border: solid white 4px;
+    border: solid var(--color) 3px;
 }
 .main-theme-button-1:hover{
-    color: rgb(66, 66, 66);
-    background-color: rgb(240, 240, 240);
+    color: var(--bgcolor1);
+    background-color: var(--addColor);
     cursor: pointer;
 }
 
@@ -109,7 +116,7 @@
     .main-step{
         width: 80vw;
     }
-    .main-theme-button-1{
-        border: solid white 3px;
-    }   
+    /* .main-theme-button-1{
+        border: solid var(--color) 3px;
+    }    */
 }

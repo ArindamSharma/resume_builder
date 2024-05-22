@@ -32,10 +32,12 @@ formStencil[INTRO][STRUCTURE]=[
     struct("First Name","input",{type:"text"}),
     struct("Last Name","input",{type:"text"}),
     struct("Title","input",{type:"text"}),
-    struct("Introduction/Summary","textarea",{cols:30,rows:4}),
+    struct("Introduction/Summary","textarea",{cols:30,rows:4,style:"resize: vertical;"}),
     struct("Email","input",{type:"email"},1),
     struct("Address","input",{type:"text"},1),
     struct("Phone Number","input",{type:"number"},1),
+    struct("Linkedin Profile","input",{type:"text"}),
+    struct("OtherLinks","input",{type:"text"},1),
 ];
 formStencil[EDUCATION]={}
 formStencil[EDUCATION][COUNT]=0;
@@ -51,7 +53,7 @@ formStencil[EDUCATION][STRUCTURE]=[
    struct("I am currently studying here.","input",{type:"checkbox",related:null},0),
    struct("To","input",{type:"month"},0),
    struct("From","input",{type:"month"},0),
-   struct("Description","textarea",{cols:30,rows:3},0),
+   struct("Description","textarea",{cols:30,rows:3,style:"resize: vertical;"},0),
 ]
 formStencil[EXPERIENCE]={}
 formStencil[EXPERIENCE][COUNT]=0;
@@ -61,7 +63,7 @@ formStencil[EXPERIENCE][STRUCTURE]=[
    struct("Position","input",{type:"text"},0),
    struct("Company","input",{type:"text"},0),
    struct("Location","input",{type:"text"},0),
-   struct("Description","textarea",{cols:30,rows:3},0),
+   struct("Description","textarea",{cols:30,rows:3,style:"resize: vertical;"},0),
    struct("I am currently working here.","input",{type:"checkbox",related:"From"},0),
    struct("To","input",{type:"month"},0),
    struct("From","input",{type:"month"},0),
@@ -72,7 +74,7 @@ formStencil[PROJECT][LABEL]="Projects";
 formStencil[PROJECT][STRUCTURE]=[
     // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Title","input",{type:"text"},0),
-   struct("Description","textarea",{cols:30,rows:5},0),
+   struct("Description","textarea",{cols:30,rows:5,style:"resize: vertical;"},0),
    struct("Skills (seperate with comma)","input",{type:"text"},1),
    struct("Link","input",{type:"text"},1),
    struct("I am currently working.","input",{type:"checkbox"},0),
@@ -127,5 +129,5 @@ formStencil[EXTRA][LABEL]="Extra/Miscellaneous";
 formStencil[EXTRA][STRUCTURE]=[
     // format: [label-text ,input-tag ,type|(col-row),sugession,add:bool]
    struct("Label","input",{type:"text"},0),
-   struct("Description","textarea",{cols:30,rows:5},1),
+   struct("Description","textarea",{cols:30,rows:5,style:"resize: vertical;"},1),
 ]

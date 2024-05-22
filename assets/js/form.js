@@ -102,6 +102,8 @@ function generateEntryField(categoryname,sectionindex,structureindex,data={}){
     }
     else{
         let inputelement=generateInput(categoryname,sectionindex,structureindex,data["value"]==undefined?"":data["value"]);
+        title.setAttribute("for",inputelement.id);
+        // console.log("Me",inputelement.id);
         entry.appendChild(inputelement);
     }
 

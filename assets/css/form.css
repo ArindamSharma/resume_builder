@@ -1,8 +1,18 @@
+:root{
+    --saveColor: rgb(54, 255, 81);
+    --removeColor: rgb(255, 94, 94);
+    --addColor: rgb(94, 156, 255);
+    --color:rgb(255, 255, 255);
+    --bgcolor1:rgba(9, 9, 9, 0.85);
+    --bgcolor2:rgba(65, 65, 65, 0.185);
+    --inputbgcolor:rgb(45, 45, 45);
+    --inputcolor:rgb(255, 255, 255);
+}
 .form-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(141, 141, 141, 0.932);
+    background-color: var(--bgcolor1);
     width: 90vw;
     max-width: 600px;
     min-width: 250px;
@@ -15,7 +25,7 @@
     font-family: 'Righteous';
     font-weight: bold;
     font-size: 30px;
-    color: white;
+    color: var(--color);
 }
 .form-body{
     display: flex;
@@ -35,10 +45,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(63, 63, 63, 0.158);
+    /* background-color: rgba(63, 63, 63, 0.158); */
     width: 100%;
     padding: 5px 0;
     margin: 5px 0;
+    gap: 10px;
 }
 .form-categorylabel{
     text-transform: uppercase;
@@ -47,19 +58,20 @@
     font-size: 25px;
     font-family: 'Righteous';
     padding: 10px;
-    color: rgb(255, 255, 255);
+    color: var(--color);
 }
 .form-category> :last-child{
     margin: 5px 0;
 }
 /* Section  */
 .form-section{
-    width: 100%;
-    background-color: rgba(65, 65, 65, 0.185);
-    padding: 10px 0;
-    margin: 5px 0;
+    width: calc(100% - 8vw);
+    background-color: var(--bgcolor2);
+    padding: 20px 2vw;
+    margin: 5px 2vw;
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
     
 }
 .form-sectioncontent{
@@ -76,7 +88,7 @@
 .form-sectiontitle{
     text-transform: uppercase;
     padding: 10px;
-    color: white;
+    color: var(--color);
     font-family: 'Arial';
     font-weight: bold;
     font-size: 15px;
@@ -85,12 +97,12 @@
 .form-field{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
     padding: 5px;
 }
 .form-field-label{
-    color: white;
+    color: var(--color);
     font-family: 'Arial';
     font-size: 15px;
     padding: 10px;
@@ -108,7 +120,11 @@
     flex-direction: row;
     flex-wrap: nowrap;
     margin-bottom: 10px;
-    background-color: lightgrey;
+    background-color: var(--inputbgcolor);
+    border-radius: 0 20px 20px 0;
+}
+.form-field-minputbox .form-removebutton{
+    border-color: var(--inputbgcolor);
 }
 .form-field-input{
     /* text-decoration: none; */
@@ -117,7 +133,9 @@
     outline: none;
     border: 0;
     padding: 8px;
-    /* border-radius: 10px; */
+    background-color: var(--inputbgcolor);
+    color: var(--inputcolor);
+    border-radius: 0 10px 10px 0;
 }
 
 /* Button */
@@ -127,31 +145,34 @@
     outline: none;
     padding: 10px 20px;
     border-radius: 50px;
-    border: solid white 4px;
+    border: solid var(--color) 3px;
     background: transparent;
-    color: white;
+    color: var(--color);
 }
 .form-removebutton{
     margin: unset;
     padding: 10px;
-    color: rgb(255, 94, 94);
+    color: var(--removeColor);
 }
 .form-removebutton:hover{
-    color: rgb(255, 115, 115);
+    background-color: var(--removeColor);
+    color: var(--color);
 }
 .form-addbutton{
     /* color: rgb(255, 255, 255); */
-    color: rgb(94, 156, 255);
+    color: var(--addColor);
 }
 .form-addbutton:hover{
-    background-color: rgb(0, 174, 255);
+    background-color: var(--addColor);
+    color: var(--color);
 }
 .form-savebutton{
     /* color: black; */
-    color: rgb(99, 255, 94);
+    color: var(--saveColor);
 }
 .form-savebutton:hover{
-    background-color: rgb(127, 255, 127);
+    background-color: var(--saveColor);
+    color: var(--color);
 }
 .form-closebutton{
     border-radius: 50%;
@@ -173,8 +194,8 @@
     filter: invert(1);
 }
 
-@media screen and (width<600px){
+/* @media screen and (width<600px){
     .form-button{
-        border: solid white 3px;
+        border: solid var(--color) 3px;
     }
-}
+} */
